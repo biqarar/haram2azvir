@@ -24,6 +24,10 @@ class model extends \mvc\model
 				$this->fixmobile();
 				break;
 
+			case 'nationalcodeduplicate':
+				$this->nationalcodeduplicate();
+				break;
+
 			default:
 				\lib\debug::warn("نکن!");
 				return false;
