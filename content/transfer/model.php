@@ -5,6 +5,7 @@ namespace content\transfer;
 class model extends \mvc\model
 {
 	use \content\transfer\model\planfile;
+	use \content\transfer\model\removefakemobile;
 
 
 	public function post_transfer()
@@ -13,8 +14,14 @@ class model extends \mvc\model
 		{
 			case 'planfile':
 				$this->plan_file();
-				return;
-				# code...
+				break;
+
+			case 'removefakemobile':
+				$this->removefakemobile();
+				break;
+
+			case 'fixmobile':
+				$this->fixmobile();
 				break;
 
 			default:

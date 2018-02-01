@@ -5,15 +5,37 @@
 <div class="tbox">
 	<h2>عملیات انتقال اطلاعات</h2>
 </div>
+
 <div class="cbox">
-
-<form method="post" >
-	<label>وارد سازی فایل طرح های سابق | اصلاح شده</label>
-	<input type="file" name="plan">
-	<input type="hidden" name="level" value="planfile">
-	<input type="submit" value="بارگزاری">
-</form>
-
+	<div class="badge success">{{1 | fitNumber}}</div>
+	<form method="post" >
+		<input type="submit" class="btn primary w300 mRa20" value="بسم الله">
+		<label>فایل طرح ها رو آماده کردم! بیا شروع کنیم</label>
+		<input type="file" name="plan">
+		<input type="hidden" name="level" value="planfile">
+	</form>
 </div>
+
+
+<div class="cbox">
+	<div class="badge success">{{2 | fitNumber}}</div>
+	<form method="post" >
+		<input type="submit" class="btn primary w300 mRa20" value="می تونم برات حذفشون کنم!">
+		<label>یه سری موبایل ها اشتباهه! چه کنیم؟</label>
+		<input type="hidden" name="level" value="removefakemobile">
+	</form>
+</div>
+
+
+<div class="cbox">
+	<div class="badge success">{{3 | fitNumber}}</div>
+	<form method="post" >
+		<input type="submit" class="btn primary w300 mRa20" value="چشم. یا علی">
+		<label>ساختار موبایل ها رو یکپارچه می کنی برام؟</label>
+		<input type="hidden" name="level" value="fixmobile">
+	</form>
+</div>
+
+
 {%endblock%}
 

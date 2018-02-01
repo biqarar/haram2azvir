@@ -19,7 +19,7 @@ trait planfile
 		}
 		else
 		{
-			\lib\debug::error(T_("فایلی وارد نشده است"));
+			\lib\debug::error(T_("داداش یه فایل بفرست! چیزی نفرستادی که!!"));
 			return false;
 		}
 
