@@ -8,7 +8,7 @@ class controller extends \content\main\controller
 	function ready()
 	{
 
-
+		$this->post('transfer')->ALL();
 	}
 }
 ?>

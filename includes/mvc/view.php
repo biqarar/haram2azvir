@@ -3,13 +3,13 @@ namespace mvc;
 
 class view extends \lib\view
 {
-	function _construct()
+	function project()
 	{
 		// define default value for global
 
-		$this->data->site['title']           = T_("DashSample");
-		$this->data->site['desc']            = T_("DashSample project");
-		$this->data->site['slogan']          = T_("Modern Approach");
+		$this->data->site['title']           = T_("سامانه انتقال اطلاعات");
+		$this->data->site['desc']            = T_("سامانه انتقال اطلاعات پورتال آموزشی مرکز قرآن و حدیث کریمه اهل بیت علیها السلام ");
+		$this->data->site['slogan']          = T_("سریع باش!");
 
 		$this->data->page['desc']            = $this->data->site['desc']. ' | '. $this->data->site['slogan'];
 

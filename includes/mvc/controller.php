@@ -7,7 +7,7 @@ class controller extends \lib\controller
 	/**
 	 * { function_description }
 	 */
-	public function _route()
+	public function project()
 	{
 
 	}
