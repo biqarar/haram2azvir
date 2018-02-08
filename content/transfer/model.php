@@ -7,6 +7,7 @@ class model extends \mvc\model
 	use \content\transfer\model\planfile;
 	use \content\transfer\model\removefakemobile;
 	use \content\transfer\model\nationalcode;
+	use \content\transfer\model\personfix;
 
 	public function database_field_upgrade()
 	{
@@ -15,6 +16,7 @@ class model extends \mvc\model
 		$query[] = "ALTER TABLE `plan` ADD `azvir_topic_id` varchar(100) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `province_name` varchar(100) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `country_name` varchar(100) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `person` ADD `education_name` varchar(200) NULL DEFAULT NULL";
 
 		foreach ($query as $key => $value)
 		{
@@ -50,6 +52,10 @@ class model extends \mvc\model
 
 			case 'removeduplicatemobile':
 				$this->removeduplicatemobile();
+				break;
+
+			case 'personfix':
+				$this->personfix();
 				break;
 
 			default:
