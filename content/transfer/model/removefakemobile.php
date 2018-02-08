@@ -7,6 +7,7 @@ trait removefakemobile
 
 	public function removefakemobile()
 	{
+
 		\lib\debug::warn("پاک می کنما!");
 	}
 

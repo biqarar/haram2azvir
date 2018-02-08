@@ -7,9 +7,23 @@ class model extends \mvc\model
 	use \content\transfer\model\planfile;
 	use \content\transfer\model\removefakemobile;
 
+	public function database_field_upgrade()
+	{
+		$query = [];
+
+		$query[] = "ALTER TABLE `plan` ADD `azvir_topic_id` varchar(100) NULL DEFAULT NULL";
+
+		foreach ($query as $key => $value)
+		{
+			\lib\db::query($value, 'quran_hadith');
+		}
+
+	}
 
 	public function post_transfer()
 	{
+		$this->database_field_upgrade();
+
 		switch (\lib\utility::post('level'))
 		{
 			case 'planfile':

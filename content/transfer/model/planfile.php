@@ -178,9 +178,12 @@ trait planfile
 				'learnunit'     => 1,
 			];
 
+			$new_topic_id = null;
+
 			$topic_id = self::fix($azvir->topic('post', $insert_topic), true, [$insert_topic, $value]);
 			if(isset($topic_id['id']))
 			{
+				$new_topic_id = $topic_id['id'];
 				$azvir_topic[$topic_id['id']] = $value;
 			}
 			else
@@ -196,12 +199,19 @@ trait planfile
 				$topic_id = self::fix($azvir->topic_search('get', $search_topic));
 				if(isset($topic_id[0]['id']))
 				{
+					$new_topic_id = $topic_id[0]['id'];
 					$azvir_topic[$topic_id[0]['id']] = $value;
 				}
 				else
 				{
 					\lib\debug::warn('Can not add topic');
 				}
+			}
+
+			if($new_topic_id && isset($value['oid']))
+			{
+				$query = "UPDATE plan SET azvir_topic_id = '$new_topic_id' WHERE plan.id = $value[oid] LIMIT 1";
+				\lib\db::query($query, 'quran_hadith');
 			}
 		}
 		\lib\debug::true("حله. بریم بعدی");
