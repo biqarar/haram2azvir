@@ -14,9 +14,12 @@ class model extends \mvc\model
 		$query = [];
 
 		$query[] = "ALTER TABLE `plan` ADD `azvir_topic_id` varchar(100) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `person` ADD `city_name` varchar(100) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `province_name` varchar(100) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `country_name` varchar(100) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `education_name` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `person` ADD `education_name2` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `person` ADD `azvir_member_id` varchar(200) NULL DEFAULT NULL";
 
 		foreach ($query as $key => $value)
 		{

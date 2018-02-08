@@ -15,7 +15,7 @@ trait personfix
 				province_name =
 				(
 					SELECT
-						CONCAT(province.name, ' - ', city.name)
+						province.name
 					FROM
 						city
 					INNER JOIN province ON city.province_id = province.id
@@ -38,34 +38,53 @@ trait personfix
 				)
 		";
 
+
+		$query[] =
+		"
+			UPDATE
+				person
+			SET
+				city_name =
+				(
+					SELECT
+						city.name
+					FROM
+						city
+					WHERE city.id = person.nationality
+				)
+		";
+
 		$query[] =
 		"
 			UPDATE
 				person
 			SET
 				education_name =
-				CONCAT
 				(
-					(
-						SELECT
-							education.section
-						FROM
-							education
-						WHERE education.id = person.education_id
-					)
-				,
-					' '
-				,
-					(
-
-						SELECT
-							education.section
-						FROM
-							education
-						WHERE education.id = person.education_howzah_id
-
-					)
+					SELECT
+						education.section
+					FROM
+						education
+					WHERE education.id = person.education_id
 				)
+
+		";
+
+
+		$query[] =
+		"
+			UPDATE
+				person
+			SET
+				education_name2 =
+				(
+					SELECT
+						education.section
+					FROM
+						education
+					WHERE education.id = person.education_howzah_id
+				)
+
 		";
 
 		// $query[] = "ALTER TABLE `person` ADD `education_name` varchar(100) NULL DEFAULT NULL";
