@@ -6,6 +6,7 @@ class model extends \mvc\model
 {
 	use \content\transfer\model\planfile;
 	use \content\transfer\model\removefakemobile;
+	use \content\transfer\model\nationalcode;
 
 	public function database_field_upgrade()
 	{
