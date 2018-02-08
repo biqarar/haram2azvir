@@ -7,9 +7,19 @@
 </div>
 
 <div class="cbox">
+	<div class="badge success">{{0 | fitNumber}}</div>
+	<form method="post" >
+		<input type="submit" class="btn primary w300 mRa20" value="بسم الله الرحمن الرحیم">
+		<label>آماده سازی های اولیه دیتا بیسی</label>
+
+		<input type="hidden" name="level" value="sql">
+	</form>
+</div>
+
+<div class="cbox">
 	<div class="badge success">{{1 | fitNumber}}</div>
 	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="بسم الله">
+		<input type="submit" class="btn primary w300 mRa20" value="برو ببینم چه می کنی">
 		<label>فایل طرح ها رو آماده کردم! بیا شروع کنیم</label>
 		<input type="file" name="plan">
 		<input type="hidden" name="level" value="planfile">
