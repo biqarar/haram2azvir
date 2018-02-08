@@ -77,5 +77,50 @@ trait removefakemobile
 		$this->removefakemobile(true);
 	}
 
+
+	public function removeduplicatemobile()
+	{
+		$query =
+		"
+			SELECT
+				bridge.value AS `mobile`,
+				count(value) as `count`
+			FROM
+				bridge
+			where
+				bridge.title = 'mobile'
+			GROUP BY value
+			HAVING count(value) >= 2
+		";
+
+		$result = \lib\db::get($query, ['mobile', 'count'], false, 'quran_hadith');
+
+		arsort($result);
+		$must_remove = [];
+		foreach ($result as $mobile => $value)
+		{
+			$query1 = "SELECT * FROM bridge WHERE bridge.value = '$mobile' AND bridge.title = 'mobile' ORDER BY id ASC ";
+			$check = \lib\db::get($query1, null, false, 'quran_hadith');
+
+			array_shift($check);
+			if($check)
+			{
+				$ids_remove = array_column($check, 'id');
+				foreach ($ids_remove as $inde => $ids_remove_raw)
+				{
+					array_push($must_remove, $ids_remove_raw);
+				}
+			}
+
+		}
+
+		if($must_remove)
+		{
+			$must_remove = implode(',', $must_remove);
+			$query1 = "DELETE FROM bridge WHERE bridge.id IN ($must_remove)";
+			$check = \lib\db::query($query1, 'quran_hadith');
+		}
+		\lib\debug::true("حله");
+	}
 }
 ?>

@@ -57,9 +57,18 @@
 </div>
 
 
-
 <div class="cbox">
 	<div class="badge success">{{5 | fitNumber}}</div>
+	<form method="post" >
+		<input type="submit" class="btn primary w300 mRa20" value="حذفش کن">
+		<label>موبایل های تکراری رو حذف کن</label>
+		<input type="hidden" name="level" value="removeduplicatemobile">
+	</form>
+</div>
+
+
+<div class="cbox">
+	<div class="badge success">{{6 | fitNumber}}</div>
 	<form method="post" >
 		<input type="submit" class="btn primary w300 mRa20" value="اینا رو هم حذف می کنم!">
 		<label>یه سری افراد نه کلاس شرکت کردند نه پول دادند!</label>
