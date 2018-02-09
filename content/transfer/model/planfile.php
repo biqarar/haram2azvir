@@ -70,7 +70,7 @@ trait planfile
 		$pricetype   = array_values($pricetype);
 		$pricetype[] = '0';
 
-		$azvir = new \lib\utility\ermile\azvir('$2y$07$ppqEBLfiUT7zlqFVxp/Wa.ILdtNVkL/i1o2eAZ4Dm41mV9VlSiU86', 'haram', 1);
+		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, 'haram', 1);
 		$azvir_group = [];
 		foreach ($group as $key => $value)
 		{

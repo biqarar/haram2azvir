@@ -50,7 +50,7 @@ trait personfix
 						city.name
 					FROM
 						city
-					WHERE city.id = person.nationality
+					WHERE city.id = person.from
 				)
 		";
 

@@ -8,6 +8,7 @@ class model extends \mvc\model
 	use \content\transfer\model\removefakemobile;
 	use \content\transfer\model\nationalcode;
 	use \content\transfer\model\personfix;
+	use \content\transfer\model\student;
 
 	public function database_field_upgrade()
 	{
@@ -59,6 +60,10 @@ class model extends \mvc\model
 
 			case 'personfix':
 				$this->personfix();
+				break;
+
+			case 'student':
+				$this->student();
 				break;
 
 			default:
