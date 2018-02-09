@@ -17,12 +17,16 @@ trait student
 				(SELECT users.username from users where users.id = person.users_id ) AS `username`
 			FROM
 				person
-
-
-
+			WHERE
+				person.azvir_member_id IS NULL
 		";
 
 		$result = \lib\db::get($query, null, false, 'quran_hadith');
+		if(!$result)
+		{
+			\lib\debug::true("همه رفتند");
+			return false;
+		}
 
 		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, 'haram', 1);
 		foreach ($result as $key => $value)
@@ -80,7 +84,7 @@ trait student
 
 			$xazvir = $azvir->member('post', $insert_member);
 
-			$member_id = self::fix($xazvir);
+			$member_id = self::fix($xazvir, true ,[$value, $insert_member]);
 			if(isset($member_id['member_id']))
 			{
 				\lib\db::query("UPDATE person set azvir_member_id = '$member_id[member_id]' WHERE person.id = $value[id] LIMIT 1 ", 'quran_hadith');
