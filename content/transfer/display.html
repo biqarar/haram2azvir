@@ -72,9 +72,21 @@
 	</form>
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'lesson' %} danger {%endif%}" value="انتقال کلاسه ها">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'classroom' %} danger {%endif%}" value="انتقال کلاس های درس">
+		<label>انتقال کلاس های درس</label>
+		<input type="hidden" name="level" value="classroom">
+	</form>
+
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'lesson' %} danger {%endif%}" value="انتقال کلاس ها">
 		<label>انتقال کلاس ها و ترم ها</label>
 		<input type="hidden" name="level" value="lesson">
+	</form>
+
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'takenunit' %} danger {%endif%}" value="انتقال انتخاب واحد ها">
+		<label>انتقال انتخاب واحد های فراگیران</label>
+		<input type="hidden" name="level" value="takenunit">
 	</form>
 
 
