@@ -65,13 +65,17 @@
 	</form>
 
 
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'teacher' %} danger {%endif%}" value="عملیات انتقال اساتید">
+		<label>شروع عملیات انتقال اساتید</label>
+		<input type="hidden" name="level" value="teacher">
+	</form>
+
+
 </div>
 
 
-
-
-
-<div class="cbox">
+<div class="cbox hidden">
 
 	<p>انتقال اطلاعات دانش آموزان</p>
 	<p>انتقال اطلاعات اساتید</p>
