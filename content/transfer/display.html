@@ -16,51 +16,51 @@
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'planfile' %} danger {%endif%}" value="برو ببینم چه می کنی">
-		<label>فایل طرح ها رو آماده کردم! بیا شروع  کنیم</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'planfile' %} danger {%endif%}" value="آپلود سرفصل ها">
+		<label>فایل سرفصل ها آماده بارگزاری است</label>
 		<input type="file" name="plan">
 		<input type="hidden" name="level" value="planfile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removefakemobile' %} danger {%endif%}" value="می تونم برات حذفشون کنم!">
-		<label>یه سری موبایل ها اشتباهه! چه کنیم؟</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removefakemobile' %} danger {%endif%}" value="حذف موبایل های اشتباه">
+		<label>موبایل هایی که تعداد ارقام اونها از حد مجاز کم یا بیشتر است</label>
 		<input type="hidden" name="level" value="removefakemobile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'fixmobile' %} danger {%endif%}" value="چشم. یا علی | حدود ۱۵ دقیقه طول می کشه">
-		<label>ساختار موبایل ها رو یکپارچه می کنی برام؟</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'fixmobile' %} danger {%endif%}" value="یکپارچه سازی ساختار موبایل ها">
+		<label>تمام موبایل ها از فیلتر موبایل عبور خواهند کرد</label>
 		<input type="hidden" name="level" value="fixmobile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'nationalcodeduplicate' %} danger {%endif%}" value="حدود ده دقیقه طول می کشه">
-		<label>کد ملی تکراری!!! تلفیقشون کن!</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'nationalcodeduplicate' %} danger {%endif%}" value="تلفیق کد ملی های تکراری">
+		<label>برخی از کد ملی ها تکراری هستند</label>
 		<input type="hidden" name="level" value="nationalcodeduplicate">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removeduplicatemobile' %} danger {%endif%}" value="حذفش کن">
-		<label>موبایل های تکراری رو حذف کن</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removeduplicatemobile' %} danger {%endif%}" value="حذف موبایل های تکرای">
+		<label>برخی از موبایل ها برای چندین نفر ثبت شده است</label>
 		<input type="hidden" name="level" value="removeduplicatemobile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'personfix' %} danger {%endif%}" value="بچه ها آماده باشین!">
-		<label>آماده سازی کاربران برای انتقال . چیزایی مثل شهر و کشور رو باید ردیفش کنیم</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'personfix' %} danger {%endif%}" value="آماده سازی جهت انتقال اطلاعات فراگیران">
+		<label>اقدامات اولیه جهت آماده سازی انتقال فراگیران</label>
 		<input type="hidden" name="level" value="personfix">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'student' %} danger {%endif%}" value="برای من  دو ساعت  طول کشید!">
-		<label>انتقال اطلاعات دانش آموزان. به گمانم خیلی طول بکشه</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'student' %} danger {%endif%}" value="عملیات انتقال فراگیران">
+		<label>شروع عملیات انتقال فراگیران. این عملیات ممکن است تا چند ساعت به طول بیانجامد</label>
 		<input type="hidden" name="level" value="student">
 	</form>
 
