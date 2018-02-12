@@ -22,6 +22,7 @@ trait student
 		";
 
 		$result = \lib\db::get($query, null, false, 'quran_hadith');
+
 		if(!$result)
 		{
 			\lib\debug::true("همه رفتند");
@@ -72,15 +73,8 @@ trait student
 				'desc'            => null,
 			];
 
-
-			if(\lib\utility\nationalcode::check($value['nationalcode']))
-			{
-				$insert_member['nationalcode']    = $value['nationalcode'];
-			}
-			else
-			{
-				$insert_member['pasportcode']    = $value['nationalcode'];
-			}
+			$insert_member['nationalcode'] = $value['nationalcode'];
+			$insert_member['pasportcode']  = $value['nationalcode'];
 
 			$xazvir = $azvir->member('post', $insert_member);
 
