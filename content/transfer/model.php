@@ -31,6 +31,11 @@ class model extends \mvc\model
 
 	public function post_transfer()
 	{
+		if(\lib\utility::get('level') != \lib\utility::post('level'))
+		{
+			$this->redirector($this->url('base'). '/transfer?level='. \lib\utility::post('level'))->redirect();
+			return;
+		}
 
 		switch (\lib\utility::post('level'))
 		{

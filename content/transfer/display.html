@@ -7,82 +7,64 @@
 </div>
 
 <div class="cbox">
-	<div class="badge success">{{0 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="بسم الله الرحمن الرحیم">
-		<label>آماده سازی های اولیه دیتا بیسی</label>
 
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'sql' %} danger {%endif%}" value="بسم الله الرحمن الرحیم">
+		<label>آماده سازی های اولیه دیتا بیسی</label>
 		<input type="hidden" name="level" value="sql">
 	</form>
-</div>
 
-<div class="cbox">
-	<div class="badge success">{{1 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="برو ببینم چه می کنی">
-		<label>فایل طرح ها رو آماده کردم! بیا شروع کنیم</label>
+
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'planfile' %} danger {%endif%}" value="برو ببینم چه می کنی">
+		<label>فایل طرح ها رو آماده کردم! بیا شروع  کنیم</label>
 		<input type="file" name="plan">
 		<input type="hidden" name="level" value="planfile">
 	</form>
-</div>
 
 
-<div class="cbox">
-	<div class="badge success">{{2 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="می تونم برات حذفشون کنم!">
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removefakemobile' %} danger {%endif%}" value="می تونم برات حذفشون کنم!">
 		<label>یه سری موبایل ها اشتباهه! چه کنیم؟</label>
 		<input type="hidden" name="level" value="removefakemobile">
 	</form>
-</div>
 
 
-<div class="cbox">
-	<div class="badge success">{{3 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="چشم. یا علی | حدود ۱۵ دقیقه طول می کشه">
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'fixmobile' %} danger {%endif%}" value="چشم. یا علی | حدود ۱۵ دقیقه طول می کشه">
 		<label>ساختار موبایل ها رو یکپارچه می کنی برام؟</label>
 		<input type="hidden" name="level" value="fixmobile">
 	</form>
-</div>
 
 
-<div class="cbox">
-	<div class="badge success">{{4 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="حدود ده دقیقه طول می کشه">
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'nationalcodeduplicate' %} danger {%endif%}" value="حدود ده دقیقه طول می کشه">
 		<label>کد ملی تکراری!!! تلفیقشون کن!</label>
 		<input type="hidden" name="level" value="nationalcodeduplicate">
 	</form>
-</div>
 
 
-<div class="cbox">
-	<div class="badge success">{{5 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="حذفش کن">
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removeduplicatemobile' %} danger {%endif%}" value="حذفش کن">
 		<label>موبایل های تکراری رو حذف کن</label>
 		<input type="hidden" name="level" value="removeduplicatemobile">
 	</form>
-</div>
 
 
-<div class="cbox">
-	<div class="badge success">{{6 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="بچه ها آماده باشین!">
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'personfix' %} danger {%endif%}" value="بچه ها آماده باشین!">
 		<label>آماده سازی کاربران برای انتقال . چیزایی مثل شهر و کشور رو باید ردیفش کنیم</label>
 		<input type="hidden" name="level" value="personfix">
 	</form>
-</div>
 
-<div class="cbox">
-	<div class="badge success">{{7 | fitNumber}}</div>
-	<form method="post" >
-		<input type="submit" class="btn primary w300 mRa20" value="برای من  دو ساعت  طول کشید!">
+
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'student' %} danger {%endif%}" value="برای من  دو ساعت  طول کشید!">
 		<label>انتقال اطلاعات دانش آموزان. به گمانم خیلی طول بکشه</label>
 		<input type="hidden" name="level" value="student">
 	</form>
+
+
 </div>
 
 
@@ -90,14 +72,12 @@
 
 
 <div class="cbox">
-	<p>یه سری تغییر دیتابیسی داریم برای آماده سازی انتال اطلاعات</p>
-	<p>مثل قرار دادن فیلد شهر ها و کشور ها برای انتقال توی جدول پرسن</p>
-	<p>برای سطوح دسترسی باید فکری کرد</p>
+
 	<p>انتقال اطلاعات دانش آموزان</p>
 	<p>انتقال اطلاعات اساتید</p>
 	<p>انتقال اطلاعات کارشناسان</p>
-	<p>موبایل های فراگیران رو باید توی جدول پرسن قرار بدیم که برای انتقال راحت باشه</p>
-	<p>با توجه به اون فایلی که سر فصل ها رو وارد کردیم باید یه دیتابیس تمپ ساخته بشه که کد طرح قبلی و کد سرفصل جدید توش ثتب بشه</p>
+
+
 	<p>
 		باید به ازای هر سه ماه یه ترم ثبت بشه و کلاس ها با توجه به تاریخشون توی اون ترم قرار بگیرند
 		اگه این کارو نکنیم آمارمون کلا به هم ور میشه
