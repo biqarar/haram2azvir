@@ -9,6 +9,7 @@ class model extends \mvc\model
 	use \content\transfer\model\nationalcode;
 	use \content\transfer\model\personfix;
 	use \content\transfer\model\student;
+	use \content\transfer\model\lesson;
 
 	public function database_field_upgrade()
 	{
@@ -22,6 +23,8 @@ class model extends \mvc\model
 		$query[] = "ALTER TABLE `person` ADD `education_name2` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `azvir_member_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `azvir_teacher_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classes` ADD `azvir_semester_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classes` ADD `azvir_lesson_id` varchar(200) NULL DEFAULT NULL";
 
 		foreach ($query as $key => $value)
 		{
@@ -70,6 +73,11 @@ class model extends \mvc\model
 
 			case 'student':
 				$this->student();
+				break;
+
+
+			case 'lesson':
+				$this->lesson();
 				break;
 
 			case 'teacher':
