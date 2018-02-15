@@ -137,10 +137,34 @@ trait planfile
 			}
 		}
 
+		$mypriceName =
+		[
+			0 => "رایگان",
+			10000 => "۱۰۰۰۰",
+			15000 => "۱۵۰۰۰",
+			20000 => "۲۰۰۰۰",
+			25000 => "۲۵۰۰۰",
+			30000 => "۳۰۰۰۰",
+			35000 => "۳۵۰۰۰",
+			40000 => "۴۰۰۰۰",
+			45000 => "۴۵۰۰۰",
+			50000 => "۵۰۰۰۰",
+			60000 => "۶۰۰۰۰",
+			70000 => "۷۰۰۰۰",
+			80000 => "۸۰۰۰۰",
+			100000 => "۱۰۰۰۰۰",
+		];
+
 		$azvir_pricetype = [];
 		foreach ($pricetype as $key => $value)
 		{
-			$pricetype_id = self::fix($azvir->pricetype('post', ['title' => $value, 'price' => $value, 'unittype' => 'real']));
+			$xtitle = $value;
+			if(array_key_exists(intval($value), $mypriceName))
+			{
+				$xtitle = $mypriceName[$value];
+			}
+
+			$pricetype_id = self::fix($azvir->pricetype('post', ['title' => $xtitle, 'price' => $value, 'unittype' => 'real']));
 			if(isset($pricetype_id['id']))
 			{
 				$azvir_pricetype[$pricetype_id['id']] = $value;
