@@ -9,7 +9,7 @@ class controller extends \content\main\controller
 	{
 		if(!defined('azvir_api_key'))
 		{
-			define('azvir_api_key', '$2y$07$r4TpZitEhF2Grb.Ug.7t.u6f8de0C4pAfaPpNNUc3L8rsR.b/5Zqa');
+			define('azvir_api_key', '$2y$07$UJaVHR9YsDfmLmfxs3lOW.FDpNOCyWdGMrFBEXh9CvYXeQatOB05C');
 		}
 
 		// $azvir = new \lib\utility\ermile\azvir('$2y$07$ppqEBLfiUT7zlqFVxp/Wa.ILdtNVkL/i1o2eAZ4Dm41mV9VlSiU86', 'haram', 1);
