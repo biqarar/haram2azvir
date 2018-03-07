@@ -17,7 +17,7 @@ trait removefakemobile
 		foreach ($all_mobile as $key => $value)
 		{
 			$temp = \lib\utility\filter::mobile($value);
-			if($temp)
+			if($temp && mb_strlen($temp) === 12)
 			{
 				$fix_mobile[$key] = $temp;
 			}

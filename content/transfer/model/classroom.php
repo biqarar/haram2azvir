@@ -16,7 +16,7 @@ trait classroom
 		";
 		$result = \lib\db::get($query, null, false , 'quran_hadith');
 
-		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, 'haram', 1);
+		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
 
 		$azvir_classroom = [];
 

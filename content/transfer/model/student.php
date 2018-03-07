@@ -57,7 +57,7 @@ trait student
 			return false;
 		}
 
-		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, 'haram', 1);
+		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
 		foreach ($result as $key => $value)
 		{
 
