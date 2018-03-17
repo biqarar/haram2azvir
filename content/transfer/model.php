@@ -32,7 +32,7 @@ class model extends \mvc\model
 		{
 			\lib\db::query($value, 'quran_hadith');
 		}
-		\lib\debug::true("حله!");
+		\lib\notif::true("حله!");
 	}
 
 	public function post_transfer()
@@ -91,7 +91,7 @@ class model extends \mvc\model
 				break;
 
 			default:
-				\lib\debug::warn("نکن!");
+				\lib\notif::warn("نکن!");
 				return false;
 				break;
 		}

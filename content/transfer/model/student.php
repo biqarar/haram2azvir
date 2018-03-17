@@ -53,7 +53,7 @@ trait student
 
 		if(!$result)
 		{
-			\lib\debug::true("همه رفتند");
+			\lib\notif::true("همه رفتند");
 			return false;
 		}
 
@@ -134,7 +134,7 @@ trait student
 			}
 			else
 			{
-				\lib\debug::error(T_("نمیتونم کاربر رو اضافه کنم"));
+				\lib\notif::error(T_("نمیتونم کاربر رو اضافه کنم"));
 
 			}
 

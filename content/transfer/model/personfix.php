@@ -96,7 +96,7 @@ trait personfix
 		{
 			\lib\db::query($value, 'quran_hadith');
 		}
-		\lib\debug::true("اینم از این");
+		\lib\notif::true("اینم از این");
 	}
 }
 ?>

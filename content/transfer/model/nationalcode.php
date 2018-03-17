@@ -23,7 +23,7 @@ trait nationalcode
 		$result = \lib\db::get($query, ['nationalcode', 'count'], false, 'quran_hadith');
 		if(!$result)
 		{
-			\lib\debug::true("حله");
+			\lib\notif::true("حله");
 			return false;
 		}
 		// var_dump($result);exit();
@@ -54,13 +54,13 @@ trait nationalcode
 
 		if($username1 == $username2)
 		{
-			\lib\debug::error("نام کاربری باهم برابر است");
+			\lib\notif::error("نام کاربری باهم برابر است");
 			return false;
 		}
 
 		if($username1 == "" || $username2 == "")
 		{
-			\lib\debug::error("هر دو نام کاربری را وارد کنید");
+			\lib\notif::error("هر دو نام کاربری را وارد کنید");
 			return false;
 		}
 
@@ -74,7 +74,7 @@ trait nationalcode
 
 		if(!$user_data1 || !$user_data2)
 		{
-			\lib\debug::error("نام کاربری اشتباه است");
+			\lib\notif::error("نام کاربری اشتباه است");
 			return false;
 		}
 
@@ -238,14 +238,14 @@ trait nationalcode
 			// echo "<br> query: " . $query->string();
 			$this->commit(function(){
 
-				var_dump(\lib\debug::complie());exit();
-				\lib\debug::true("ok");
+				var_dump(\lib\notif::complie());exit();
+				\lib\notif::true("ok");
 			});
 			$this->rollback(function(){
 
 
-				var_dump(\lib\debug::complie());exit();
-				\lib\debug::error("fuck");
+				var_dump(\lib\notif::complie());exit();
+				\lib\notif::error("fuck");
 			});
 
 		}

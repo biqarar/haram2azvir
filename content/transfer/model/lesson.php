@@ -67,7 +67,7 @@ trait lesson
 			$start_date_month = strtotime($start_date);
 			if(!$start_date_month)
 			{
-				\lib\debug::error(T_("Can not set the time"));
+				\lib\notif::error(T_("Can not set the time"));
 				continue;
 			}
 
@@ -107,7 +107,7 @@ trait lesson
 					}
 					else
 					{
-						\lib\debug::warn("Can not add semester $semester_name_temp");
+						\lib\notif::warn("Can not add semester $semester_name_temp");
 					}
 				}
 			}

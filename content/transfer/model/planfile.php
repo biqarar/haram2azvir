@@ -19,7 +19,7 @@ trait planfile
 		}
 		else
 		{
-			\lib\debug::error(T_("داداش یه فایل بفرست! چیزی نفرستادی که!!"));
+			\lib\notif::error(T_("داداش یه فایل بفرست! چیزی نفرستادی که!!"));
 			return false;
 		}
 
@@ -40,7 +40,7 @@ trait planfile
 			{
 				if(count($value) !== count($first_rows))
 				{
-					\lib\debug::error(T_("اینتر آخر فایل رو پاک کن!"));
+					\lib\notif::error(T_("اینتر آخر فایل رو پاک کن!"));
 					return false;
 				}
 
@@ -88,7 +88,7 @@ trait planfile
 				}
 				else
 				{
-					\lib\debug::warn("Can not add group $value");
+					\lib\notif::warn("Can not add group $value");
 				}
 			}
 		}
@@ -110,7 +110,7 @@ trait planfile
 				}
 				else
 				{
-					\lib\debug::warn("Can not add grade $value");
+					\lib\notif::warn("Can not add grade $value");
 				}
 			}
 		}
@@ -132,7 +132,7 @@ trait planfile
 				}
 				else
 				{
-					\lib\debug::warn("Can not add course $value");
+					\lib\notif::warn("Can not add course $value");
 				}
 			}
 		}
@@ -180,7 +180,7 @@ trait planfile
 				}
 				else
 				{
-					\lib\debug::warn("Can not add pricetype $value");
+					\lib\notif::warn("Can not add pricetype $value");
 				}
 			}
 		}
@@ -228,7 +228,7 @@ trait planfile
 				}
 				else
 				{
-					\lib\debug::warn('Can not add topic');
+					\lib\notif::warn('Can not add topic');
 				}
 			}
 
@@ -238,7 +238,7 @@ trait planfile
 				\lib\db::query($query, 'quran_hadith');
 			}
 		}
-		\lib\debug::true("حله. بریم بعدی");
+		\lib\notif::true("حله. بریم بعدی");
 
 		// var_dump($group, $grade, $course, $price);
 		// var_dump($first_rows, $rows);

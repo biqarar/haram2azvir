@@ -46,12 +46,12 @@ trait removefakemobile
 
 					\lib\db::query($run_update_query, 'quran_hadith', ['multi_query' => true]);
 				}
-				\lib\debug::true("درستش کردم تعداد موبایل هایی که درست کردم  = " . (string) $count);
+				\lib\notif::true("درستش کردم تعداد موبایل هایی که درست کردم  = " . (string) $count);
 
 			}
 			else
 			{
-				\lib\debug::true("همه موبایل ها قبلا درست شده بودند");
+				\lib\notif::true("همه موبایل ها قبلا درست شده بودند");
 			}
 
 		}
@@ -65,7 +65,7 @@ trait removefakemobile
 				\lib\db::query("DELETE FROM bridge WHERE id IN ($ids) ", 'quran_hadith');
 			}
 
-			\lib\debug::warn("موبایل های خراب =  ". (string) (count($all_mobile) - count($fix_mobile)));
+			\lib\notif::warn("موبایل های خراب =  ". (string) (count($all_mobile) - count($fix_mobile)));
 
 		}
 
@@ -120,7 +120,7 @@ trait removefakemobile
 			$query1 = "DELETE FROM bridge WHERE bridge.id IN ($must_remove)";
 			$check = \lib\db::query($query1, 'quran_hadith');
 		}
-		\lib\debug::true("حله");
+		\lib\notif::true("حله");
 	}
 }
 ?>

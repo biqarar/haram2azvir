@@ -49,7 +49,7 @@ trait classroom
 				}
 				else
 				{
-					\lib\debug::warn("Can not add classroom $value[name]");
+					\lib\notif::warn("Can not add classroom $value[name]");
 				}
 			}
 			if($new_id)
@@ -57,7 +57,7 @@ trait classroom
 				\lib\db::query("UPDATE place set azvir_classroom_id = '$new_id' WHERE place.id = $value[id] LIMIT 1 ", 'quran_hadith');
 			}
 		}
-		\lib\debug::true("تمام");
+		\lib\notif::true("تمام");
 	}
 }
 ?>
