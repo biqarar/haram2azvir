@@ -39,7 +39,7 @@ class model extends \mvc\model
 	{
 		if(\lib\utility::get('level') != \lib\utility::post('level'))
 		{
-			$this->redirector(\lib\url::base(). '/transfer?level='. \lib\utility::post('level'))->redirect();
+			\lib\redirect::to(\lib\url::base(). '/transfer?level='. \lib\utility::post('level'));
 			return;
 		}
 
