@@ -53,7 +53,7 @@ trait student
 
 		if(!$result)
 		{
-			\lib\notif::true("همه رفتند");
+			\lib\notif::ok("همه رفتند");
 			return false;
 		}
 

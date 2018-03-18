@@ -32,7 +32,7 @@ class model extends \mvc\model
 		{
 			\lib\db::query($value, 'quran_hadith');
 		}
-		\lib\notif::true("حله!");
+		\lib\notif::ok("حله!");
 	}
 
 	public function post_transfer()

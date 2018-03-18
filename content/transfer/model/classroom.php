@@ -57,7 +57,7 @@ trait classroom
 				\lib\db::query("UPDATE place set azvir_classroom_id = '$new_id' WHERE place.id = $value[id] LIMIT 1 ", 'quran_hadith');
 			}
 		}
-		\lib\notif::true("تمام");
+		\lib\notif::ok("تمام");
 	}
 }
 ?>

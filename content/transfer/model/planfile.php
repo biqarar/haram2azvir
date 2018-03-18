@@ -238,7 +238,7 @@ trait planfile
 				\lib\db::query($query, 'quran_hadith');
 			}
 		}
-		\lib\notif::true("حله. بریم بعدی");
+		\lib\notif::ok("حله. بریم بعدی");
 
 		// var_dump($group, $grade, $course, $price);
 		// var_dump($first_rows, $rows);

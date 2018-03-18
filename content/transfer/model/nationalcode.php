@@ -23,7 +23,7 @@ trait nationalcode
 		$result = \lib\db::get($query, ['nationalcode', 'count'], false, 'quran_hadith');
 		if(!$result)
 		{
-			\lib\notif::true("حله");
+			\lib\notif::ok("حله");
 			return false;
 		}
 		// var_dump($result);exit();
@@ -239,7 +239,7 @@ trait nationalcode
 			$this->commit(function(){
 
 				var_dump(\lib\notif::complie());exit();
-				\lib\notif::true("ok");
+				\lib\notif::ok("ok");
 			});
 			$this->rollback(function(){
 
