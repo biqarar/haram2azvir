@@ -12,7 +12,7 @@ trait planfile
 
 	public function plan_file()
 	{
-		$plan_file = \lib\utility::files('plan');
+		$plan_file = \lib\request::files('plan');
 		if(isset($plan_file['tmp_name']))
 		{
 			$plan_file = @\lib\utility\file::read($plan_file['tmp_name']);
