@@ -8,7 +8,7 @@ class controller extends \mvc\controller
 	{
 		if(!\lib\user::id())
 		{
-			\lib\error::bad();
+			\lib\header::status(400, );
 		}
 	}
 
