@@ -105,7 +105,7 @@ trait student
 				$insert_member['code'] = $value['username'];
 			}
 
-			if(\lib\utility\nationalcode::check($value['nationalcode']))
+			if(\lib\utility\filter::nationalcode($value['nationalcode']))
 			{
 				$insert_member['nationalcode']    = $value['nationalcode'];
 				$insert_member['foreign'] = false;
