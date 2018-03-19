@@ -9,14 +9,14 @@
 <div class="cbox">
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'sql' %} danger {%endif%}" value="بسم الله الرحمن الرحیم">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'sql' %} danger {%endif%}" value="بسم الله الرحمن الرحیم">
 		<label>آماده سازی های اولیه دیتا بیسی</label>
 		<input type="hidden" name="level" value="sql">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'planfile' %} danger {%endif%}" value="آپلود سرفصل ها">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'planfile' %} danger {%endif%}" value="آپلود سرفصل ها">
 		<label>فایل سرفصل ها آماده بارگزاری است</label>
 		<input type="file" name="plan">
 		<input type="hidden" name="level" value="planfile">
@@ -24,67 +24,67 @@
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removefakemobile' %} danger {%endif%}" value="حذف موبایل های اشتباه">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'removefakemobile' %} danger {%endif%}" value="حذف موبایل های اشتباه">
 		<label>موبایل هایی که تعداد ارقام اونها از حد مجاز کم یا بیشتر است</label>
 		<input type="hidden" name="level" value="removefakemobile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'fixmobile' %} danger {%endif%}" value="یکپارچه سازی ساختار موبایل ها">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'fixmobile' %} danger {%endif%}" value="یکپارچه سازی ساختار موبایل ها">
 		<label>تمام موبایل ها از فیلتر موبایل عبور خواهند کرد</label>
 		<input type="hidden" name="level" value="fixmobile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'nationalcodeduplicate' %} danger {%endif%}" value="تلفیق کد ملی های تکراری">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'nationalcodeduplicate' %} danger {%endif%}" value="تلفیق کد ملی های تکراری">
 		<label>برخی از کد ملی ها تکراری هستند</label>
 		<input type="hidden" name="level" value="nationalcodeduplicate">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'removeduplicatemobile' %} danger {%endif%}" value="حذف موبایل های تکرای">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'removeduplicatemobile' %} danger {%endif%}" value="حذف موبایل های تکرای">
 		<label>برخی از موبایل ها برای چندین نفر ثبت شده است</label>
 		<input type="hidden" name="level" value="removeduplicatemobile">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'personfix' %} danger {%endif%}" value="آماده سازی جهت انتقال اطلاعات فراگیران">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'personfix' %} danger {%endif%}" value="آماده سازی جهت انتقال اطلاعات فراگیران">
 		<label>اقدامات اولیه جهت آماده سازی انتقال فراگیران</label>
 		<input type="hidden" name="level" value="personfix">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'student' %} danger {%endif%}" value="عملیات انتقال فراگیران">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'student' %} danger {%endif%}" value="عملیات انتقال فراگیران">
 		<label>شروع عملیات انتقال فراگیران. این عملیات ممکن است تا چند ساعت به طول بیانجامد</label>
 		<input type="hidden" name="level" value="student">
 	</form>
 
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'teacher' %} danger {%endif%}" value="عملیات انتقال اساتید">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'teacher' %} danger {%endif%}" value="عملیات انتقال اساتید">
 		<label>شروع عملیات انتقال اساتید</label>
 		<input type="hidden" name="level" value="teacher">
 	</form>
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'classroom' %} danger {%endif%}" value="انتقال کلاس های درس">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'classroom' %} danger {%endif%}" value="انتقال کلاس های درس">
 		<label>انتقال کلاس های درس</label>
 		<input type="hidden" name="level" value="classroom">
 	</form>
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'lesson' %} danger {%endif%}" value="انتقال کلاس ها">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'lesson' %} danger {%endif%}" value="انتقال کلاس ها">
 		<label>انتقال کلاس ها و ترم ها</label>
 		<input type="hidden" name="level" value="lesson">
 	</form>
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if utilityGET.level == 'takenunit' %} danger {%endif%}" value="انتقال انتخاب واحد ها">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'takenunit' %} danger {%endif%}" value="انتقال انتخاب واحد ها">
 		<label>انتقال انتخاب واحد های فراگیران</label>
 		<input type="hidden" name="level" value="takenunit">
 	</form>
