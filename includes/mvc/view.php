@@ -13,12 +13,7 @@ class view extends \lib\view
 
 		$this->data->page['desc']            = $this->data->site['desc']. ' | '. $this->data->site['slogan'];
 
-		$this->data->bodyclass               = 'unselectable';
-
-		$this->include->css_ermile       = false;
-		// $this->include->js_main       = false;
 		$this->include->css              = false;
-		// $this->include->js            = false;
 
 		// if you need to set a class for body element in html add in this value
 		$this->data->bodyclass           = null;
