@@ -39,7 +39,7 @@ class model extends \mvc\model
 	{
 		if(\lib\request::get('level') != \lib\request::post('level'))
 		{
-			\lib\redirect::to(\lib\url::base(). '/transfer?level='. \lib\request::post('level'));
+			\lib\redirect::to(\dash\url::base(). '/transfer?level='. \lib\request::post('level'));
 			return;
 		}
 
