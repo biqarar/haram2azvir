@@ -32,14 +32,14 @@ class model extends \mvc\model
 		{
 			\dash\db::query($value, 'quran_hadith');
 		}
-		\lib\notif::ok("حله!");
+		\dash\notif::ok("حله!");
 	}
 
 	public function post_transfer()
 	{
 		if(\dash\request::get('level') != \dash\request::post('level'))
 		{
-			\lib\redirect::to(\dash\url::base(). '/transfer?level='. \dash\request::post('level'));
+			\dash\redirect::to(\dash\url::base(). '/transfer?level='. \dash\request::post('level'));
 			return;
 		}
 
@@ -91,7 +91,7 @@ class model extends \mvc\model
 				break;
 
 			default:
-				\lib\notif::warn("نکن!");
+				\dash\notif::warn("نکن!");
 				return false;
 				break;
 		}

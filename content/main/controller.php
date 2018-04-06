@@ -6,9 +6,9 @@ class controller extends \mvc\controller
 {
 	public function repository()
 	{
-		if(!\lib\user::id())
+		if(!\dash\user::id())
 		{
-			\lib\header::status(400, );
+			\dash\header::status(400, );
 		}
 	}
 
