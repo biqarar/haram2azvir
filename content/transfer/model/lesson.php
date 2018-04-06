@@ -76,7 +76,7 @@ trait lesson
 
 			$semester_name_temp = $semester_name[$month[$start_date_month]];
 			$year = date("Y", strtotime($start_date));
-			$semester_name_temp .= ' '. \lib\utility\convert::to_fa_number($year);
+			$semester_name_temp .= ' '. \dash\utility\convert::to_fa_number($year);
 
 			if(array_search($semester_name_temp, $azvir_semester) === false)
 			{
