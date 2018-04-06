@@ -8,7 +8,7 @@ trait removefakemobile
 	public function removefakemobile($_fix = false)
 	{
 		$all_mobile = "SELECT bridge.id AS `id`, bridge.value AS `mobile` from bridge WHERE bridge.title = 'mobile' ";
-		$all_mobile = \lib\db::get($all_mobile, ['id', 'mobile'], false, 'quran_hadith');
+		$all_mobile = \dash\db::get($all_mobile, ['id', 'mobile'], false, 'quran_hadith');
 		$count_all = count($all_mobile);
 
 		$fix_mobile = [];
@@ -44,7 +44,7 @@ trait removefakemobile
 				{
 					$run_update_query = implode(' ; ', array_values($value));
 
-					\lib\db::query($run_update_query, 'quran_hadith', ['multi_query' => true]);
+					\dash\db::query($run_update_query, 'quran_hadith', ['multi_query' => true]);
 				}
 				\lib\notif::ok("درستش کردم تعداد موبایل هایی که درست کردم  = " . (string) $count);
 
@@ -62,7 +62,7 @@ trait removefakemobile
 			if($ids)
 			{
 				$ids = implode(',', $ids);
-				\lib\db::query("DELETE FROM bridge WHERE id IN ($ids) ", 'quran_hadith');
+				\dash\db::query("DELETE FROM bridge WHERE id IN ($ids) ", 'quran_hadith');
 			}
 
 			\lib\notif::warn("موبایل های خراب =  ". (string) (count($all_mobile) - count($fix_mobile)));
@@ -93,14 +93,14 @@ trait removefakemobile
 			HAVING count(value) >= 2
 		";
 
-		$result = \lib\db::get($query, ['mobile', 'count'], false, 'quran_hadith');
+		$result = \dash\db::get($query, ['mobile', 'count'], false, 'quran_hadith');
 
 		arsort($result);
 		$must_remove = [];
 		foreach ($result as $mobile => $value)
 		{
 			$query1 = "SELECT * FROM bridge WHERE bridge.value = '$mobile' AND bridge.title = 'mobile' ORDER BY id ASC ";
-			$check = \lib\db::get($query1, null, false, 'quran_hadith');
+			$check = \dash\db::get($query1, null, false, 'quran_hadith');
 
 			array_shift($check);
 			if($check)
@@ -118,7 +118,7 @@ trait removefakemobile
 		{
 			$must_remove = implode(',', $must_remove);
 			$query1 = "DELETE FROM bridge WHERE bridge.id IN ($must_remove)";
-			$check = \lib\db::query($query1, 'quran_hadith');
+			$check = \dash\db::query($query1, 'quran_hadith');
 		}
 		\lib\notif::ok("حله");
 	}

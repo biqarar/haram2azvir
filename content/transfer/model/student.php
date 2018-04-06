@@ -43,7 +43,7 @@ trait student
 			";
 		}
 
-		$result = \lib\db::get($query, null, false, 'quran_hadith');
+		$result = \dash\db::get($query, null, false, 'quran_hadith');
 
 		$type = 'student';
 		if($_type === 'teacher')
@@ -130,7 +130,7 @@ trait student
 					$field = 'azvir_member_id';
 				}
 
-				\lib\db::query("UPDATE person set $field = '$member_id[member_id]' WHERE person.id = $value[id] LIMIT 1 ", 'quran_hadith');
+				\dash\db::query("UPDATE person set $field = '$member_id[member_id]' WHERE person.id = $value[id] LIMIT 1 ", 'quran_hadith');
 			}
 			else
 			{

@@ -235,7 +235,7 @@ trait planfile
 			if($new_topic_id && isset($value['oid']))
 			{
 				$query = "UPDATE plan SET azvir_topic_id = '$new_topic_id' WHERE plan.id = $value[oid] LIMIT 1";
-				\lib\db::query($query, 'quran_hadith');
+				\dash\db::query($query, 'quran_hadith');
 			}
 		}
 		\lib\notif::ok("حله. بریم بعدی");

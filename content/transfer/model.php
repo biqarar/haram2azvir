@@ -30,7 +30,7 @@ class model extends \mvc\model
 
 		foreach ($query as $key => $value)
 		{
-			\lib\db::query($value, 'quran_hadith');
+			\dash\db::query($value, 'quran_hadith');
 		}
 		\lib\notif::ok("حله!");
 	}

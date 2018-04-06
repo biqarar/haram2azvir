@@ -20,7 +20,7 @@ trait nationalcode
 			HAVING count(nationalcode) >= 2
 		";
 
-		$result = \lib\db::get($query, ['nationalcode', 'count'], false, 'quran_hadith');
+		$result = \dash\db::get($query, ['nationalcode', 'count'], false, 'quran_hadith');
 		if(!$result)
 		{
 			\lib\notif::ok("حله");
@@ -30,7 +30,7 @@ trait nationalcode
 		foreach ($result as $nationalcode => $value)
 		{
 			$find_username = "SELECT users.username FROM person INNER JOIN users ON users.id = person.users_id WHERE person.nationalcode = '$nationalcode' ";
-			$find_username = \lib\db::get($find_username, 'username', false, 'quran_hadith');
+			$find_username = \dash\db::get($find_username, 'username', false, 'quran_hadith');
 			if(isset($find_username[0]) && isset($find_username[1]))
 			{
 				$this->post_merge($find_username[0], $find_username[1]);
@@ -66,11 +66,11 @@ trait nationalcode
 
 		// $user_data1 = $this->sql()->tableUsers()->whereUsername($username1)->limit(1)->select();
 		// $user_data1 = ($user_data1->num() == 1) ? $user_data1 = $user_data1->assoc() : false;
-		$user_data1 = \lib\db::get("SELECT * FROM users WHERE users.username = '$username1' LIMIT 1", null, true, 'quran_hadith');
+		$user_data1 = \dash\db::get("SELECT * FROM users WHERE users.username = '$username1' LIMIT 1", null, true, 'quran_hadith');
 
 		// $user_data2 = $this->sql()->tableUsers()->whereUsername($username2)->limit(1)->select();
 		// $user_data2 = ($user_data2->num() == 1) ? $user_data2 = $user_data2->assoc() : false;
-		$user_data2 = \lib\db::get("SELECT * FROM users WHERE users.username = '$username2' LIMIT 1", null, true, 'quran_hadith');
+		$user_data2 = \dash\db::get("SELECT * FROM users WHERE users.username = '$username2' LIMIT 1", null, true, 'quran_hadith');
 
 		if(!$user_data1 || !$user_data2)
 		{
@@ -104,10 +104,10 @@ trait nationalcode
 	public function person($users_id1 = false, $users_id2 = false) {
 
 		// $person1 = $this->sql()->tablePerson()->whereUsers_id($users_id1)->limit(1)->select()->assoc();
-		$person1 = \lib\db::get("SELECT * FROM person WHERE users_id = '$users_id1' LIMIT 1", null, true, 'quran_hadith');
+		$person1 = \dash\db::get("SELECT * FROM person WHERE users_id = '$users_id1' LIMIT 1", null, true, 'quran_hadith');
 
 		// $person2 = $this->sql()->tablePerson()->whereUsers_id($users_id2)->limit(1)->select()->assoc();
-		$person2 = \lib\db::get("SELECT * FROM person WHERE users_id = '$users_id2' LIMIT 1", null, true, 'quran_hadith');
+		$person2 = \dash\db::get("SELECT * FROM person WHERE users_id = '$users_id2' LIMIT 1", null, true, 'quran_hadith');
 		if(!$person1 || !$person2)
 		{
 			return false;
@@ -134,20 +134,20 @@ trait nationalcode
 		{
 			$update = implode(',', $update);
 			$person2_id = $person2['id'];
-			\lib\db::query("UPDATE person SET $update WHERE person.id = $person2_id LIMIT 1", 'quran_hadith');
+			\dash\db::query("UPDATE person SET $update WHERE person.id = $person2_id LIMIT 1", 'quran_hadith');
 		}
 
 		$person1_id = $person1['id'];
-		\lib\db::query("DELETE FROM person WHERE person.id = $person1_id LIMIT 1", 'quran_hadith');
+		\dash\db::query("DELETE FROM person WHERE person.id = $person1_id LIMIT 1", 'quran_hadith');
 	}
 
 	public function bridge($users_id1 = false, $users_id2 = false)
 	{
 		// $bridge1 = $this->sql()->tableBridge()->whereUsers_id($users_id1)->select()->allAssoc();
-		$bridge1 = \lib\db::get("SELECT * FROM bridge WHERE users_id = '$users_id1' ", null, false, 'quran_hadith');
+		$bridge1 = \dash\db::get("SELECT * FROM bridge WHERE users_id = '$users_id1' ", null, false, 'quran_hadith');
 
 		// $bridge2 = $this->sql()->tableBridge()->whereUsers_id($users_id2)->select()->allAssoc();
-		$bridge2 = \lib\db::get("SELECT * FROM bridge WHERE users_id = '$users_id2' ", null, false, 'quran_hadith');
+		$bridge2 = \dash\db::get("SELECT * FROM bridge WHERE users_id = '$users_id2' ", null, false, 'quran_hadith');
 
 		foreach ($bridge1 as $key1 => $value1)
 		{
@@ -155,21 +155,21 @@ trait nationalcode
 			// $check = $this->sql()->tableBridge()->whereUsers_id($users_id2)->andTitle($value1['title'])->andValue($value1['value'])->select();
 			$xtitle = $value1['title'];
 			$xvalue = $value1['value'];
-			$check = \lib\db::get("SELECT * FROM bridge WHERE users_id = '$users_id2' AND title = '$xtitle' AND bridge.value = '$xvalue' LIMIT 1", null, true, 'quran_hadith');
+			$check = \dash\db::get("SELECT * FROM bridge WHERE users_id = '$users_id2' AND title = '$xtitle' AND bridge.value = '$xvalue' LIMIT 1", null, true, 'quran_hadith');
 
 			if(count($check) == 0)
 			{
 				#update
 				// $update = $this->sql()->tableBridge()->whereId($value1['id'])->setUsers_id($users_id2)->update();
 				$xid = $value1['id'];
-				$update = \lib\db::query("UPDATE bridge set users_id = $users_id2  WHERE id = '$xid' ", 'quran_hadith');
+				$update = \dash\db::query("UPDATE bridge set users_id = $users_id2  WHERE id = '$xid' ", 'quran_hadith');
 			}
 			else
 			{
 				#duplicate must be remove
 				// $delete = $this->sql()->tableBridge()->whereId($check->assoc("id"))->delete();
 				$chekc_id = $check['id'];
-				$update = \lib\db::query("DELETE FROM  bridge WHERE id = '$chekc_id' ", 'quran_hadith');
+				$update = \dash\db::query("DELETE FROM  bridge WHERE id = '$chekc_id' ", 'quran_hadith');
 			}
 		}
 
@@ -177,38 +177,38 @@ trait nationalcode
 
 	public function classification($users_id1 = false, $users_id2 = false)
 	{
-		$update = \lib\db::query("UPDATE classification set users_id = $users_id2  WHERE users_id = '$users_id1' ", 'quran_hadith');
+		$update = \dash\db::query("UPDATE classification set users_id = $users_id2  WHERE users_id = '$users_id1' ", 'quran_hadith');
 		// $update = $this->sql()->tableClassification()->whereUsers_id($users_id1)->setUsers_id($users_id2)->update();
 
 
 	}
 
 	public function price($users_id1 = false, $users_id2 = false) {
-		$update = \lib\db::query("UPDATE price set users_id = $users_id2  WHERE users_id = '$users_id1' ", 'quran_hadith');
+		$update = \dash\db::query("UPDATE price set users_id = $users_id2  WHERE users_id = '$users_id1' ", 'quran_hadith');
 		// $update = $this->sql()->tablePrice()->whereUsers_id($users_id1)->setUsers_id($users_id2)->update();
 	}
 
 	public function users_branch($users_id1 = false, $users_id2 = false)
 	{
 		// $list_branch = $this->sql()->tableUsers_branch()->whereUsers_id($users_id1)->select()->allAssoc();
-		$list_branch = \lib\db::get("SELECT * FROM users_branch WHERE users_id = '$users_id1' ", null, false, 'quran_hadith');
+		$list_branch = \dash\db::get("SELECT * FROM users_branch WHERE users_id = '$users_id1' ", null, false, 'quran_hadith');
 		foreach ($list_branch as $key => $value)
 		{
 			// $check = $this->sql()->tableUsers_branch()->whereUsers_id($users_id2)->andBranch_id($value['branch_id'])->select();
 			$xvalue = $value['branch_id'];
-			$check = \lib\db::get("SELECT * FROM users_branch WHERE users_id = '$users_id2' AND branch_id = $xvalue ", null, false, 'quran_hadith');
+			$check = \dash\db::get("SELECT * FROM users_branch WHERE users_id = '$users_id2' AND branch_id = $xvalue ", null, false, 'quran_hadith');
 			if(count($check) == 0)
 			{
 				$xbranch = $value['branch_id'];
 				$xtype   = $value['type'];
 				$xs      = $value['status'];
-				$insert = \lib\db::query("INSERT INTO users_branch SET  users_id = $users_id2, branch_id = $xbranch , type = '$xtype', status = '$xs' ", 'quran_hadith');
+				$insert = \dash\db::query("INSERT INTO users_branch SET  users_id = $users_id2, branch_id = $xbranch , type = '$xtype', status = '$xs' ", 'quran_hadith');
 
 				// $insert = $this->sql()->tableUsers_branch()->setUsers_id($users_id2)->setBranch_id($value['branch_id'])->setType($value['type'])->setStatus($value['status'])->insert();
 			}
 		}
 		// $update = $this->sql()->tableUsers_branch()->whereUsers_id($users_id1)->setStatus("delete")->update();
-		$update = \lib\db::query("UPDATE  users_branch SET  status 	 = 'delete' where users_id = $users_id1 ", 'quran_hadith');
+		$update = \dash\db::query("UPDATE  users_branch SET  status 	 = 'delete' where users_id = $users_id1 ", 'quran_hadith');
 
 	}
 

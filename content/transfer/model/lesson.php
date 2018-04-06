@@ -15,7 +15,7 @@ trait lesson
 			ORDER BY classes.start_date ASC
 
 		";
-		$result = \lib\db::get($query, null, false , 'quran_hadith');
+		$result = \dash\db::get($query, null, false , 'quran_hadith');
 
 		$semester_name =
 		[

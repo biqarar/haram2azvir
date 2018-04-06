@@ -14,7 +14,7 @@ trait classroom
 				place
 
 		";
-		$result = \lib\db::get($query, null, false , 'quran_hadith');
+		$result = \dash\db::get($query, null, false , 'quran_hadith');
 
 		$azvir = new \lib\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
 
@@ -54,7 +54,7 @@ trait classroom
 			}
 			if($new_id)
 			{
-				\lib\db::query("UPDATE place set azvir_classroom_id = '$new_id' WHERE place.id = $value[id] LIMIT 1 ", 'quran_hadith');
+				\dash\db::query("UPDATE place set azvir_classroom_id = '$new_id' WHERE place.id = $value[id] LIMIT 1 ", 'quran_hadith');
 			}
 		}
 		\lib\notif::ok("تمام");
