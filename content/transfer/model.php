@@ -37,13 +37,13 @@ class model extends \mvc\model
 
 	public function post_transfer()
 	{
-		if(\lib\request::get('level') != \lib\request::post('level'))
+		if(\dash\request::get('level') != \dash\request::post('level'))
 		{
-			\lib\redirect::to(\dash\url::base(). '/transfer?level='. \lib\request::post('level'));
+			\lib\redirect::to(\dash\url::base(). '/transfer?level='. \dash\request::post('level'));
 			return;
 		}
 
-		switch (\lib\request::post('level'))
+		switch (\dash\request::post('level'))
 		{
 			case 'sql':
 				$this->database_field_upgrade();
