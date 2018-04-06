@@ -15,7 +15,7 @@ trait planfile
 		$plan_file = \dash\request::files('plan');
 		if(isset($plan_file['tmp_name']))
 		{
-			$plan_file = @\lib\file::read($plan_file['tmp_name']);
+			$plan_file = @\dash\file::read($plan_file['tmp_name']);
 		}
 		else
 		{
