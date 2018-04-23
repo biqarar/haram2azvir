@@ -11,6 +11,7 @@ class model
 	use \content\transfer\model\student;
 	use \content\transfer\model\lesson;
 	use \content\transfer\model\classroom;
+	use \content\transfer\model\price;
 
 	public static function database_field_upgrade()
 	{
@@ -88,6 +89,10 @@ class model
 
 			case 'teacher':
 				self::student('teacher');
+				break;
+
+			case 'price':
+				self::price_calc();
 				break;
 
 			default:
