@@ -4,7 +4,7 @@ namespace content\transfer\model;
 
 trait nationalcode
 {
-	public function nationalcodeduplicate()
+	public static function nationalcodeduplicate()
 	{
 
 		$query =
@@ -33,7 +33,7 @@ trait nationalcode
 			$find_username = \dash\db::get($find_username, 'username', false, 'quran_hadith');
 			if(isset($find_username[0]) && isset($find_username[1]))
 			{
-				$this->post_merge($find_username[0], $find_username[1]);
+				self::post_merge($find_username[0], $find_username[1]);
 			}
 
 		}
@@ -46,7 +46,7 @@ trait nationalcode
 	public $nationalcode = false;
 	public $show = array();
 
-	public function post_merge($username1, $username2)
+	public static function post_merge($username1, $username2)
 	{
 		set_time_limit(30000);
 		ini_set('memory_limit', '-1');
@@ -79,29 +79,29 @@ trait nationalcode
 		}
 
 		//------------- person
-		$this->person($user_data1['id'], $user_data2['id']);
+		self::person($user_data1['id'], $user_data2['id']);
 
 		//------------- bridge
-		$this->bridge($user_data1['id'], $user_data2['id']);
+		self::bridge($user_data1['id'], $user_data2['id']);
 
 		//------------- classification
-		$this->classification($user_data1['id'], $user_data2['id']);
+		self::classification($user_data1['id'], $user_data2['id']);
 
 		//------------- price
-		$this->price($user_data1['id'], $user_data2['id']);
+		self::price($user_data1['id'], $user_data2['id']);
 
 		//------------- users_branch
-		$this->users_branch($user_data1['id'], $user_data2['id']);
+		self::users_branch($user_data1['id'], $user_data2['id']);
 
 		//------------- users_description
-		$this->users_description($user_data1['id'], $user_data2['id']);
+		self::users_description($user_data1['id'], $user_data2['id']);
 
 		//------------- file_users
-		$this->file_users($user_data1['id'], $user_data2['id']);
+		self::file_users($user_data1['id'], $user_data2['id']);
 
 	}
 
-	public function person($users_id1 = false, $users_id2 = false) {
+	public static function person($users_id1 = false, $users_id2 = false) {
 
 		// $person1 = $this->sql()->tablePerson()->whereUsers_id($users_id1)->limit(1)->select()->assoc();
 		$person1 = \dash\db::get("SELECT * FROM person WHERE users_id = '$users_id1' LIMIT 1", null, true, 'quran_hadith');
@@ -141,7 +141,7 @@ trait nationalcode
 		\dash\db::query("DELETE FROM person WHERE person.id = $person1_id LIMIT 1", 'quran_hadith');
 	}
 
-	public function bridge($users_id1 = false, $users_id2 = false)
+	public static function bridge($users_id1 = false, $users_id2 = false)
 	{
 		// $bridge1 = $this->sql()->tableBridge()->whereUsers_id($users_id1)->select()->allAssoc();
 		$bridge1 = \dash\db::get("SELECT * FROM bridge WHERE users_id = '$users_id1' ", null, false, 'quran_hadith');
@@ -175,7 +175,7 @@ trait nationalcode
 
 	}
 
-	public function classification($users_id1 = false, $users_id2 = false)
+	public static function classification($users_id1 = false, $users_id2 = false)
 	{
 		$update = \dash\db::query("UPDATE classification set users_id = $users_id2  WHERE users_id = '$users_id1' ", 'quran_hadith');
 		// $update = $this->sql()->tableClassification()->whereUsers_id($users_id1)->setUsers_id($users_id2)->update();
@@ -183,12 +183,12 @@ trait nationalcode
 
 	}
 
-	public function price($users_id1 = false, $users_id2 = false) {
+	public static function price($users_id1 = false, $users_id2 = false) {
 		$update = \dash\db::query("UPDATE price set users_id = $users_id2  WHERE users_id = '$users_id1' ", 'quran_hadith');
 		// $update = $this->sql()->tablePrice()->whereUsers_id($users_id1)->setUsers_id($users_id2)->update();
 	}
 
-	public function users_branch($users_id1 = false, $users_id2 = false)
+	public static function users_branch($users_id1 = false, $users_id2 = false)
 	{
 		// $list_branch = $this->sql()->tableUsers_branch()->whereUsers_id($users_id1)->select()->allAssoc();
 		$list_branch = \dash\db::get("SELECT * FROM users_branch WHERE users_id = '$users_id1' ", null, false, 'quran_hadith');
@@ -212,12 +212,12 @@ trait nationalcode
 
 	}
 
-	public function users_description($users_id1 = false, $users_id2 = false) {
+	public static function users_description($users_id1 = false, $users_id2 = false) {
 		// $update = $this->sql()->tableUsers_description()
 		// 	->whereUsers_id($users_id1)->setUsers_id($users_id2)->update();
 	}
 
-	public function file_users($users_id1 = false, $users_id2 = false) {
+	public static function file_users($users_id1 = false, $users_id2 = false) {
 		// $update = $this->sql()->tableFile_user()
 		// 	->whereUsers_id($users_id1)->setUsers_id($users_id2)->update();
 	}
@@ -225,7 +225,7 @@ trait nationalcode
 
 
 
-	public function _get_delete(){
+	public static function _get_delete(){
 		die();
 		$table = get::table();
 		$status = get::status();
@@ -252,7 +252,7 @@ trait nationalcode
 		// var_dump($_GET);exit() 	;
 	}
 
-	public function sql_duplicate($nationalcode = false ){
+	public static function sql_duplicate($nationalcode = false ){
 		var_dump(":|");exit();
 		$this->nationalcode = $nationalcode;
 		//----------- if get the url delete it
@@ -309,7 +309,7 @@ trait nationalcode
 
 	}
 
-	public function table($array, $title){
+	public static function table($array, $title){
 		// return ;
 		// var_dump($array);
 		$href ="database/status=removeduplicate/nationalcode=" . $this->nationalcode;

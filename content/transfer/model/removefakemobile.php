@@ -5,7 +5,7 @@ namespace content\transfer\model;
 trait removefakemobile
 {
 
-	public function removefakemobile($_fix = false)
+	public static function removefakemobile($_fix = false)
 	{
 		$all_mobile = "SELECT bridge.id AS `id`, bridge.value AS `mobile` from bridge WHERE bridge.title = 'mobile' ";
 		$all_mobile = \dash\db::get($all_mobile, ['id', 'mobile'], false, 'quran_hadith');
@@ -72,13 +72,13 @@ trait removefakemobile
 	}
 
 
-	public function fixmobile()
+	public static function fixmobile()
 	{
-		$this->removefakemobile(true);
+		self::removefakemobile(true);
 	}
 
 
-	public function removeduplicatemobile()
+	public static function removeduplicatemobile()
 	{
 		$query =
 		"

@@ -4,7 +4,7 @@ namespace content\transfer\model;
 
 trait lesson
 {
-	public function lesson()
+	public static function lesson()
 	{
 		$query =
 		"

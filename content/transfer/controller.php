@@ -1,11 +1,11 @@
 <?php
 namespace content\transfer;
 
-class controller extends \content\main\controller
+class controller
 {
 
 	// for routing check
-	function ready()
+	public static function routing()
 	{
 		ini_set('memory_limit', '-1');
 
@@ -23,7 +23,6 @@ class controller extends \content\main\controller
 		// $add_group = $azvir->pricetype('post', ['title' => 'حفظ', 'price' => 2000, 'unittype' => 'real']);
 		// var_dump($add_group);exit();
 
-		$this->post('transfer')->ALL();
 	}
 
 

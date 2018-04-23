@@ -2,7 +2,7 @@
 namespace content\transfer;
 
 
-class model extends \mvc\model
+class model
 {
 	use \content\transfer\model\planfile;
 	use \content\transfer\model\removefakemobile;
@@ -12,7 +12,7 @@ class model extends \mvc\model
 	use \content\transfer\model\lesson;
 	use \content\transfer\model\classroom;
 
-	public function database_field_upgrade()
+	public static function database_field_upgrade()
 	{
 		$query = [];
 
@@ -35,7 +35,7 @@ class model extends \mvc\model
 		\dash\notif::ok("حله!");
 	}
 
-	public function post_transfer()
+	public static function post()
 	{
 		if(\dash\request::get('level') != \dash\request::post('level'))
 		{
@@ -46,48 +46,48 @@ class model extends \mvc\model
 		switch (\dash\request::post('level'))
 		{
 			case 'sql':
-				$this->database_field_upgrade();
+				self::database_field_upgrade();
 				break;
 
 			case 'planfile':
-				$this->plan_file();
+				self::plan_file();
 				break;
 
 			case 'removefakemobile':
-				$this->removefakemobile();
+				self::removefakemobile();
 				break;
 
 			case 'fixmobile':
-				$this->fixmobile();
+				self::fixmobile();
 				break;
 
 			case 'nationalcodeduplicate':
-				$this->nationalcodeduplicate();
+				self::nationalcodeduplicate();
 				break;
 
 			case 'removeduplicatemobile':
-				$this->removeduplicatemobile();
+				self::removeduplicatemobile();
 				break;
 
 			case 'personfix':
-				$this->personfix();
+				self::personfix();
 				break;
 
 			case 'student':
-				$this->student();
+				self::student();
 				break;
 
 			case 'classroom':
-				$this->classroom();
+				self::classroom();
 				break;
 
 
 			case 'lesson':
-				$this->lesson();
+				self::lesson();
 				break;
 
 			case 'teacher':
-				$this->student('teacher');
+				self::student('teacher');
 				break;
 
 			default:

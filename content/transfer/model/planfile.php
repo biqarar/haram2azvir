@@ -10,7 +10,7 @@ trait planfile
 		return array_map(function($_a){return trim(trim($_a), '"');}, $_array);
 	}
 
-	public function plan_file()
+	public static function plan_file()
 	{
 		$plan_file = \dash\request::files('plan');
 		if(isset($plan_file['tmp_name']))

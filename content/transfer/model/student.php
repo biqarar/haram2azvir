@@ -4,7 +4,7 @@ namespace content\transfer\model;
 
 trait student
 {
-	public function student($_type = null)
+	public static function student($_type = null)
 	{
 
 

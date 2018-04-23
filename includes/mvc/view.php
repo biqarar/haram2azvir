@@ -1,9 +1,9 @@
 <?php
 namespace mvc;
 
-class view extends \lib\view
+class view
 {
-	function project()
+	public static function config()
 	{
 		// define default value for global
 
@@ -22,16 +22,6 @@ class view extends \lib\view
 		{
 			$this->options();
 		}
-	}
-
-
-	/**
-	 * [pushState description]
-	 * @return [type] [description]
-	 */
-	function pushState()
-	{
-
 	}
 }
 ?>

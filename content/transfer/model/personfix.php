@@ -4,7 +4,7 @@ namespace content\transfer\model;
 
 trait personfix
 {
-	public function personfix()
+	public static function personfix()
 	{
 		$query = [];
 		$query[] =

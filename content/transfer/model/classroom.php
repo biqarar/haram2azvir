@@ -4,7 +4,7 @@ namespace content\transfer\model;
 
 trait classroom
 {
-	public function classroom()
+	public static function classroom()
 	{
 		$query =
 		"
