@@ -64,7 +64,7 @@ trait student
 			$insert_member =
 			[
 				'force_add'       => true,
-				'type'            => $type,
+				$type             => 1,
 				'mobile'          => $value['mobile'],
 				'email'           => $value['email'],
 				'shfrom'          => $value['province_name'],
@@ -100,10 +100,8 @@ trait student
 				'desc'            => null,
 			];
 
-			if($type === 'student')
-			{
-				$insert_member['code'] = $value['username'];
-			}
+			$insert_member['code'] = $value['username'];
+
 
 			if(\dash\utility\filter::nationalcode($value['nationalcode']))
 			{
