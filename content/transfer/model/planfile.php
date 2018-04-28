@@ -164,7 +164,7 @@ trait planfile
 				$xtitle = $mypriceName[$value];
 			}
 
-			$pricetype_id = self::fix($azvir->pricetype('post', ['title' => $xtitle, 'price' => $value, 'unittype' => 'real']));
+			$pricetype_id = self::fix($azvir->pricetype('post', ['title' => $xtitle, 'price' => $value, 'unittype' => 'learn']));
 			if(isset($pricetype_id['id']))
 			{
 				$azvir_pricetype[$pricetype_id['id']] = $value;
@@ -228,7 +228,7 @@ trait planfile
 				}
 				else
 				{
-					\dash\notif::warn('Can not add topic');
+					\dash\engine\process::stop();
 				}
 			}
 
@@ -238,7 +238,15 @@ trait planfile
 				\dash\db::query($query, 'quran_hadith');
 			}
 		}
-		\dash\notif::ok("حله. بریم بعدی");
+		if(\dash\engine\process::status())
+		{
+			\dash\notif::ok("حله. بریم بعدی");
+
+		}
+		else
+		{
+			\dash\notif::error("یه جای کار می لنگه");
+		}
 
 		// var_dump($group, $grade, $course, $price);
 		// var_dump($first_rows, $rows);
