@@ -25,6 +25,7 @@ class model
 		$query[] = "ALTER TABLE `person` ADD `education_name2` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `azvir_member_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `person` ADD `azvir_teacher_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `person` ADD `azvir_expert_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `azvir_semester_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `azvir_lesson_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `place` ADD `azvir_classroom_id` varchar(200) NULL DEFAULT NULL";
@@ -89,6 +90,10 @@ class model
 
 			case 'teacher':
 				self::student('teacher');
+				break;
+
+			case 'operator':
+				self::student('operator');
 				break;
 
 			case 'price':

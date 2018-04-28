@@ -7,8 +7,25 @@ trait student
 	public static function student($_type = null)
 	{
 
-
-		if($_type === 'teacher')
+		if($_type === 'operator')
+		{
+			$query =
+			"
+				SELECT
+					person.*,
+					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'mobile' LIMIT 1) AS `mobile`,
+					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'phone' LIMIT 1) AS `phone`,
+					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'email' LIMIT 1) AS `email`,
+					(SELECT users.username from users where users.id = person.users_id ) AS `username`
+				FROM
+					person
+				INNER JOIN users_branch ON users_branch.users_id = person.users_id
+				WHERE
+					person.azvir_expert_id IS NULL AND
+					users_branch.type = 'operator'
+			";
+		}
+		elseif($_type === 'teacher')
 		{
 			$query =
 			"
@@ -49,6 +66,10 @@ trait student
 		if($_type === 'teacher')
 		{
 			$type = 'teacher';
+		}
+		elseif($_type === 'operator')
+		{
+			$type = 'expert';
 		}
 
 		if(!$result)
@@ -117,9 +138,14 @@ trait student
 			$xazvir = $azvir->member('post', $insert_member);
 
 			$member_id = self::fix($xazvir, true ,[$value, $insert_member]);
+
 			if(isset($member_id['member_id']))
 			{
-				if($type === 'teacher')
+				if($type === 'expert')
+				{
+					$field = 'azvir_expert_id';
+				}
+				elseif($type === 'teacher')
 				{
 					$field = 'azvir_teacher_id';
 				}

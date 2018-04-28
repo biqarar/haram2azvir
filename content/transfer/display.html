@@ -71,6 +71,13 @@
 		<input type="hidden" name="level" value="teacher">
 	</form>
 
+
+	<form method="post"  class="mT1">
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'operator' %} danger {%endif%}" value="عملیات انتقال اساتید">
+		<label>شروع عملیات انتقال اساتید</label>
+		<input type="hidden" name="level" value="operator">
+	</form>
+
 	<form method="post"  class="mT1">
 		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'classroom' %} danger {%endif%}" value="انتقال کلاس های درس">
 		<label>انتقال کلاس های درس</label>
