@@ -123,6 +123,7 @@ trait lesson
 			}
 		}
 		\dash\db::query("UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)", 'quran_hadith');
+		\dash\db::query("UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id)", 'quran_hadith');
 		var_dump($azvir_semester);exit();
 	}
 }

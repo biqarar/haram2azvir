@@ -53,6 +53,7 @@ class model
 		$query[] = "ALTER TABLE `classes` ADD `azvir_semester_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `azvir_lesson_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `azvir_teacher_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classes` ADD `azvir_topic_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `place` ADD `azvir_classroom_id` varchar(200) NULL DEFAULT NULL";
 
 		foreach ($query as $key => $value)
