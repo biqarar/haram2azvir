@@ -6,29 +6,34 @@ trait classroom
 {
 	public static function classroom()
 	{
-		$query =
-		"
-			SELECT
-				*
-			FROM
-				place
-
-		";
-		$result = \dash\db::get($query, null, false , 'quran_hadith');
-
 		$azvir = new \dash\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
+
+		$result = \dash\utility\import::csv(__DIR__.'/madras.csv');
+
+		$master_key = $active_class = array_column($result, 'fixed');
+		$active_class = array_unique($active_class);
+		$active_class = array_filter($active_class);
 
 		$azvir_classroom = [];
 
-		foreach ($result as $key => $value)
+		foreach ($active_class as $key => $value)
 		{
+			$mutli = array_search($value, $master_key);
+			$multiclass = false;
+			if(isset($result[$mutli]['multiclass']))
+			{
+				if($result[$mutli]['multiclass'] == 'yes')
+				{
+					$multiclass = true;
+				}
+			}
 
 			$insert_classroom =
 			[
-				'title'      => $value['name'],
-				'desc'       => $value['description'],
-				'status'     => $value['status'],
-				'multiclass' => $value['multiclass'] === 'no' ? false : true,
+				'title'      => $value,
+				'desc'       => null,
+				'status'     => 'enable',
+				'multiclass' => $multiclass,
 				'maxperson'  => null,
 			];
 
@@ -54,7 +59,17 @@ trait classroom
 			}
 			if($new_id)
 			{
-				\dash\db::query("UPDATE place set azvir_classroom_id = '$new_id' WHERE place.id = $value[id] LIMIT 1 ", 'quran_hadith');
+				$ids = array_column($result, 'fixed', 'id');
+				$all_ids = [];
+				foreach ($ids as $place_id => $place_name)
+				{
+					if($value == $place_name)
+					{
+						$all_ids[] = $place_id;
+					}
+				}
+				$all_ids = implode(',', $all_ids);
+				\dash\db::query("UPDATE place set azvir_classroom_id = '$new_id' WHERE place.id IN ($all_ids) ", 'quran_hadith');
 			}
 		}
 		\dash\notif::ok("تمام");
