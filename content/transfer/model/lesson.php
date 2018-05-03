@@ -93,9 +93,13 @@ trait lesson
 					$insert_semester['status'] = 'active';
 				}
 
+				$new_id = null;
+
 				$semester_id = self::fix($azvir->semester('post', $insert_semester));
 				if(isset($semester_id['id']))
 				{
+					$new_id = $semester_id['id'];
+
 					$azvir_semester[$semester_id['id']] = $semester_id;
 				}
 				else
@@ -103,12 +107,18 @@ trait lesson
 					$semester_id = self::fix($azvir->semester_search('get', ['search' => $semester_name_temp]));
 					if(isset($semester_id[0]['id']))
 					{
+						$new_id = $semester_id[0]['id'];
 						$azvir_semester[$semester_id[0]['id']] = $semester_id[0];
 					}
 					else
 					{
 						\dash\notif::warn("Can not add semester $semester_name_temp");
 					}
+				}
+
+				if($new_id)
+				{
+					\dash\db::query("UPDATE classes set azvir_semester_id = '$new_id' WHERE classes.id = $value[id] ", 'quran_hadith');
 				}
 			}
 		}
