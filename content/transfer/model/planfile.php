@@ -255,22 +255,6 @@ trait planfile
 	}
 
 
-	public static function fix($_responce, $_var_dump = false, $_data = [])
-	{
-
-		$text = null;
-
-		$text .= json_encode($_responce, JSON_UNESCAPED_UNICODE). "\n";
-		$text .= json_encode($_data, JSON_UNESCAPED_UNICODE). "\n\n";
-
-		file_put_contents(__DIR__. '/log',$text , FILE_APPEND);
-
-		if(isset($_responce['result']) && $_responce['result'])
-		{
-			return $_responce['result'];
-		}
-		return null;
-	}
 
 }
 ?>

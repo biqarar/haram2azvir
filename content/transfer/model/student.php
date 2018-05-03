@@ -82,6 +82,19 @@ trait student
 		foreach ($result as $key => $value)
 		{
 
+			$birthdate = \dash\date::db($value['birthday']);
+			if($birthdate === false)
+			{
+				$birthdate = null;
+			}
+
+
+			$passportdate = \dash\date::db($value['pasport_date']);
+			if($passportdate === false)
+			{
+				$passportdate = null;
+			}
+
 			$insert_member =
 			[
 				'force_add'       => true,
@@ -94,8 +107,8 @@ trait student
 				'firstname'       => $value['name'],
 				'lastname'        => $value['family'],
 				'father'          => $value['father'],
-				'birthdate'       => $value['birthday'],
-				'pasportdate'     => $value['pasport_date'],
+				'birthdate'       => $birthdate,
+				'pasportdate'     => $passportdate,
 				'gender'          => $value['gender'],
 				'marital'         => $value['marriage'],
 				'shcode'          => $value['code'],
@@ -126,13 +139,13 @@ trait student
 
 			if(\dash\utility\filter::nationalcode($value['nationalcode']))
 			{
-				$insert_member['nationalcode']    = $value['nationalcode'];
-				$insert_member['foreign'] = false;
+				$insert_member['nationalcode'] = $value['nationalcode'];
+				$insert_member['foreign']      = false;
 			}
 			else
 			{
-				$insert_member['pasportcode']    = $value['nationalcode'];
-				$insert_member['foreign'] = true;
+				$insert_member['pasportcode'] = $value['nationalcode'];
+				$insert_member['foreign']     = true;
 			}
 
 			$xazvir = $azvir->member('post', $insert_member);
@@ -158,6 +171,33 @@ trait student
 			}
 			else
 			{
+				$meta = ["nationalcode","pasportcode"];
+				if(isset($member_id['msg'][0]['meta']) && $member_id['msg'][0]['meta'] == $meta)
+				{
+					$xx = $azvir->member_search('get', ['search' => $value['nationalcode']]);
+
+					if(isset($xx['result'][0]))
+					{
+						$xx = $xx['result'][0];
+					}
+
+					if(array_key_exists($type, $xx))
+					{
+
+						$patch =
+						[
+							'id'  => $xx['id'],
+							$type => 1,
+						];
+
+						$xpatch = $azvir->member('patch', $patch);
+						$text = json_encode($patch, JSON_UNESCAPED_UNICODE);
+						file_put_contents(__DIR__. '/log1',$text , FILE_APPEND). "\n";
+
+					}
+
+				}
+
 				\dash\notif::error(T_("نمیتونم کاربر رو اضافه کنم"));
 
 			}
