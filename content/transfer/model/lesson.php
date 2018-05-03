@@ -124,7 +124,89 @@ trait lesson
 		}
 		\dash\db::query("UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)", 'quran_hadith');
 		\dash\db::query("UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id)", 'quran_hadith');
-		var_dump($azvir_semester);exit();
+
+		self::add_lesson();
+	}
+
+
+	private static function add_lesson()
+	{
+		$query =
+		"
+			SELECT
+				*
+			FROM
+				classes
+			ORDER BY classes.start_date ASC
+
+		";
+		$result = \dash\db::get($query, null, false , 'quran_hadith');
+
+		$azvir = new \dash\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
+
+		$azvir_lesson = [];
+
+
+		foreach ($result as $key => $value)
+		{
+			$status = ['draft','cancel','awaiting','full','enable','disable','expire'];
+
+			if($value['status'] === 'ready')
+			{
+				$status = 'awaiting';
+			}
+			elseif($value['status'] === 'done')
+			{
+				$status = 'expire';
+			}
+			elseif ($value['status'] === 'running')
+			{
+				$status = 'enable';
+			}
+			else
+			{
+				$status = 'draft';
+			}
+			$insert_lesson                = [];
+			$insert_lesson['status']      = $status;
+			$insert_lesson['semester_id'] = $value['azvir_semester_id'];
+			$insert_lesson['topic_id']    = $value['azvir_topic_id'];
+			$insert_lesson['teacher']     = $value['azvir_teacher_id'];
+
+			$lesson_id = self::fix($azvir->lesson('post', $insert_lesson));
+
+			if(isset($lesson_id['id']))
+				{
+					$new_id = $lesson_id['id'];
+
+					$azvir_lesson[$lesson_id['id']] = $lesson_id;
+				}
+				else
+				{
+					$lesson_id = self::fix($azvir->semester_search('get', ['search' => $semester_name_temp]));
+					if(isset($lesson_id[0]['id']))
+					{
+						$new_id = $lesson_id[0]['id'];
+						$azvir_lesson[$lesson_id[0]['id']] = $lesson_id[0];
+					}
+					else
+					{
+						\dash\notif::warn("Can not add lesson $semester_name_temp");
+					}
+				}
+
+				if($new_id)
+				{
+					\dash\db::query("UPDATE classes set azvir_lesson_id = '$new_id' WHERE classes.id = $value[id] ", 'quran_hadith');
+				}
+			// $insert_lesson['gender']      = $gender;
+			// $insert_lesson['maxperson']   = $maxperson;
+			// $insert_lesson['examdate']    = $examdate;
+
+			# code...
+		}
+
+
 	}
 }
 ?>
