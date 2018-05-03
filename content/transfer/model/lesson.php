@@ -122,6 +122,7 @@ trait lesson
 				}
 			}
 		}
+		\dash\db::query("UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)", 'quran_hadith');
 		var_dump($azvir_semester);exit();
 	}
 }
