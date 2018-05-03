@@ -192,7 +192,21 @@ trait student
 
 						$xpatch = $azvir->member('patch', $patch);
 						$text = json_encode($patch, JSON_UNESCAPED_UNICODE);
-						file_put_contents(__DIR__. '/log1',$text , FILE_APPEND). "\n";
+
+						if($type === 'expert')
+						{
+							$field = 'azvir_expert_id';
+						}
+						elseif($type === 'teacher')
+						{
+							$field = 'azvir_teacher_id';
+						}
+						else
+						{
+							$field = 'azvir_member_id';
+						}
+
+						\dash\db::query("UPDATE person set $field = '$xx[id]' WHERE person.id = $value[id] LIMIT 1 ", 'quran_hadith');
 
 					}
 
