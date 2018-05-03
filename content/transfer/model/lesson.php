@@ -96,14 +96,14 @@ trait lesson
 				$semester_id = self::fix($azvir->semester('post', $insert_semester));
 				if(isset($semester_id['id']))
 				{
-					$azvir_semester[$semester_id['id']] = $value;
+					$azvir_semester[$semester_id['id']] = $semester_id;
 				}
 				else
 				{
 					$semester_id = self::fix($azvir->semester_search('get', ['search' => $semester_name_temp]));
 					if(isset($semester_id[0]['id']))
 					{
-						$azvir_semester[$semester_id[0]['id']] = $value;
+						$azvir_semester[$semester_id[0]['id']] = $semester_id[0];
 					}
 					else
 					{
