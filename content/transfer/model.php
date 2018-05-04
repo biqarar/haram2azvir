@@ -12,6 +12,7 @@ class model
 	use \content\transfer\model\lesson;
 	use \content\transfer\model\takenunit;
 	use \content\transfer\model\classroom;
+	use \content\transfer\model\times;
 	use \content\transfer\model\price;
 
 
@@ -142,6 +143,10 @@ class model
 
 			case 'takenunit':
 				self::takenunit();
+				break;
+
+			case 'times':
+				self::times();
 				break;
 
 			default:
