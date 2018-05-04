@@ -6,6 +6,8 @@ trait lesson
 {
 	public static function lesson()
 	{
+		self::add_lesson();
+		exit();
 		$query =
 		"
 			SELECT
@@ -167,13 +169,18 @@ trait lesson
 			{
 				$status = 'draft';
 			}
-			$insert_lesson                = [];
-			$insert_lesson['status']      = $status;
-			$insert_lesson['semester_id'] = $value['azvir_semester_id'];
-			$insert_lesson['topic_id']    = $value['azvir_topic_id'];
-			$insert_lesson['teacher']     = $value['azvir_teacher_id'];
+			$topicteacher = ['topic_id' => $value['azvir_topic_id'], 'teacher_id' => $value['azvir_teacher_id']];
+			var_dump($topicteacher);exit();
+			self::fix($azvir->topicteacher('post', $topicteacher), null, $topicteacher);
 
-			$lesson_id = self::fix($azvir->lesson('post', $insert_lesson));
+			$insert_lesson                   = [];
+			$insert_lesson['status']         = $status;
+			$insert_lesson['force_semester'] = true;
+			$insert_lesson['semester_id']    = $value['azvir_semester_id'];
+			$insert_lesson['topic_id']       = $value['azvir_topic_id'];
+			$insert_lesson['teacher']        = $value['azvir_teacher_id'];
+
+			$lesson_id = self::fix($azvir->lesson('post', $insert_lesson), false, $insert_lesson);
 
 			if(isset($lesson_id['id']))
 				{
