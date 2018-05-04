@@ -54,7 +54,13 @@ class model
 		$query[] = "ALTER TABLE `classes` ADD `azvir_lesson_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `azvir_teacher_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `azvir_topic_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classes` ADD `azvir_maxperson` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classes` ADD `branch_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classes` ADD `gender` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `place` ADD `azvir_classroom_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "UPDATE classes SET classes.branch_id = (SELECT branch_id from plan where classes.plan_id = plan.id)";
+		$query[] = "UPDATE classes SET classes.gender = (SELECT gender from branch where classes.branch_id = branch.id)";
+		$query[] = "UPDATE classes SET classes.azvir_maxperson = (SELECT max_person from plan where classes.plan_id = plan.id)";
 
 		foreach ($query as $key => $value)
 		{

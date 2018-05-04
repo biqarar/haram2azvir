@@ -6,8 +6,7 @@ trait lesson
 {
 	public static function lesson()
 	{
-		self::add_lesson();
-		exit();
+
 		$query =
 		"
 			SELECT
@@ -77,8 +76,15 @@ trait lesson
 			$start_date_month = intval($start_date_month);
 
 			$semester_name_temp = $semester_name[$month[$start_date_month]];
-			$year = date("Y", strtotime($start_date));
+
+			$endyear = $year = date("Y", strtotime($start_date));
+			if($month[$start_date_month] == 3)
+			{
+				$endyear = intval($year) + 1;
+			}
 			$semester_name_temp .= ' '. \dash\utility\convert::to_fa_number($year);
+
+			$new_id = null;
 
 			if(array_search($semester_name_temp, $azvir_semester) === false)
 			{
@@ -86,7 +92,7 @@ trait lesson
 				[
 					'title' => $semester_name_temp,
 					'start' => (string) $year . (string) $semester_start[$month[$start_date_month]],
-					'end'   => (string) $year . (string) $semester_end[$month[$start_date_month]],
+					'end'   => (string) $endyear . (string) $semester_end[$month[$start_date_month]],
 				];
 				$insert_semester['status'] = 'expire';
 
@@ -95,14 +101,13 @@ trait lesson
 					$insert_semester['status'] = 'active';
 				}
 
-				$new_id = null;
 
-				$semester_id = self::fix($azvir->semester('post', $insert_semester));
+				$semester_id = self::fix($azvir->semester('post', $insert_semester), null, $insert_semester);
 				if(isset($semester_id['id']))
 				{
 					$new_id = $semester_id['id'];
 
-					$azvir_semester[$semester_id['id']] = $semester_id;
+					$azvir_semester[$semester_id['id']] = $semester_name_temp;
 				}
 				else
 				{
@@ -110,7 +115,7 @@ trait lesson
 					if(isset($semester_id[0]['id']))
 					{
 						$new_id = $semester_id[0]['id'];
-						$azvir_semester[$semester_id[0]['id']] = $semester_id[0];
+						$azvir_semester[$semester_id[0]['id']] = $semester_name_temp;
 					}
 					else
 					{
@@ -118,12 +123,18 @@ trait lesson
 					}
 				}
 
-				if($new_id)
-				{
-					\dash\db::query("UPDATE classes set azvir_semester_id = '$new_id' WHERE classes.id = $value[id] ", 'quran_hadith');
-				}
+			}
+			else
+			{
+				$new_id = array_search($semester_name_temp, $azvir_semester);
+			}
+
+			if($new_id)
+			{
+				\dash\db::query("UPDATE classes set azvir_semester_id = '$new_id' WHERE classes.id = $value[id] ", 'quran_hadith');
 			}
 		}
+
 		\dash\db::query("UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)", 'quran_hadith');
 		\dash\db::query("UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id)", 'quran_hadith');
 
@@ -170,8 +181,8 @@ trait lesson
 				$status = 'draft';
 			}
 			$topicteacher = ['topic_id' => $value['azvir_topic_id'], 'teacher_id' => $value['azvir_teacher_id']];
-			var_dump($topicteacher);exit();
-			self::fix($azvir->topicteacher('post', $topicteacher), null, $topicteacher);
+			$xx = self::fix($azvir->topicteacher('post', $topicteacher), null, $topicteacher);
+
 
 			$insert_lesson                   = [];
 			$insert_lesson['status']         = $status;
@@ -179,6 +190,9 @@ trait lesson
 			$insert_lesson['semester_id']    = $value['azvir_semester_id'];
 			$insert_lesson['topic_id']       = $value['azvir_topic_id'];
 			$insert_lesson['teacher']        = $value['azvir_teacher_id'];
+			$insert_lesson['gender']         = $value['gender'] == 'male' ? 'male' : $value['gender'] == 'female' ? 'female' : 'all';
+			$insert_lesson['maxperson']      = $value['azvir_maxperson'];
+			$insert_lesson['examdate']       = $value['end_date'];
 
 			$lesson_id = self::fix($azvir->lesson('post', $insert_lesson), false, $insert_lesson);
 
@@ -190,25 +204,23 @@ trait lesson
 				}
 				else
 				{
-					$lesson_id = self::fix($azvir->semester_search('get', ['search' => $semester_name_temp]));
-					if(isset($lesson_id[0]['id']))
-					{
-						$new_id = $lesson_id[0]['id'];
-						$azvir_lesson[$lesson_id[0]['id']] = $lesson_id[0];
-					}
-					else
-					{
-						\dash\notif::warn("Can not add lesson $semester_name_temp");
-					}
+					$new_id = null;
+					// $lesson_id = self::fix($azvir->semester_search('get', ['search' => $semester_name_temp]));
+					// if(isset($lesson_id[0]['id']))
+					// {
+					// 	$new_id = $lesson_id[0]['id'];
+					// 	$azvir_lesson[$lesson_id[0]['id']] = $lesson_id[0];
+					// }
+					// else
+					// {
+					// 	\dash\notif::warn("Can not add lesson $semester_name_temp");
+					// }
 				}
 
 				if($new_id)
 				{
 					\dash\db::query("UPDATE classes set azvir_lesson_id = '$new_id' WHERE classes.id = $value[id] ", 'quran_hadith');
 				}
-			// $insert_lesson['gender']      = $gender;
-			// $insert_lesson['maxperson']   = $maxperson;
-			// $insert_lesson['examdate']    = $examdate;
 
 			# code...
 		}
