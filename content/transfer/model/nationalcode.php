@@ -16,7 +16,7 @@ trait nationalcode
 				person
 			WHERE
 				nationalcode <> ''
-			GROUP BY nationalcode, name, family
+			GROUP BY nationalcode
 			HAVING count(nationalcode) >= 2
 		";
 

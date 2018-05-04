@@ -16,7 +16,7 @@ class controller
 
 		if(!defined('azvir_api_school'))
 		{
-			define('azvir_api_school', 'haram5');
+			define('azvir_api_school', 'haram7');
 		}
 
 		// $azvir = new \dash\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
