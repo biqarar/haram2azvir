@@ -79,14 +79,14 @@
 	</form>
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'classroom' %} danger {%endif%}" value="انتقال کلاس های درس">
-		<label>انتقال کلاس های درس</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'classroom' %} danger {%endif%}" value="انتقال مدرس ها">
+		<label>انتقال مدرس ها</label>
 		<input type="hidden" name="level" value="classroom">
 	</form>
 
 	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'lesson' %} danger {%endif%}" value="انتقال کلاس ها">
-		<label>انتقال کلاس ها و ترم ها</label>
+		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'lesson' %} danger {%endif%}" value="انتقال درس ها و ترم ها">
+		<label>انتقال درس ها و ترم ها</label>
 		<input type="hidden" name="level" value="lesson">
 	</form>
 
@@ -94,12 +94,6 @@
 		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'takenunit' %} danger {%endif%}" value="انتقال انتخاب واحد ها">
 		<label>انتقال انتخاب واحد های فراگیران</label>
 		<input type="hidden" name="level" value="takenunit">
-	</form>
-
-	<form method="post"  class="mT1">
-		<input type="submit" class="btn primary w300 mRa20 {%if requestGET.level == 'price' %} danger {%endif%}" value="فرایند مالی">
-		<label>فرایند مالی</label>
-		<input type="hidden" name="level" value="price">
 	</form>
 
 

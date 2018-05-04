@@ -135,8 +135,18 @@ trait lesson
 			}
 		}
 
-		\dash\db::query("UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)", 'quran_hadith');
-		\dash\db::query("UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id)", 'quran_hadith');
+		$query   = [];
+		$query[] = "UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher);";
+		$query[] = "UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id);";
+		$query[] = "UPDATE classification SET azvir_member_id = (SELECT azvir_member_id from person where person.users_id = classification.users_id);";
+		$query[] = "UPDATE classes SET classes.branch_id = (SELECT branch_id from plan where classes.plan_id = plan.id);";
+		$query[] = "UPDATE classes SET classes.gender = (SELECT gender from branch where classes.branch_id = branch.id);";
+		$query[] = "UPDATE classes SET classes.azvir_maxperson = (SELECT max_person from plan where classes.plan_id = plan.id);";
+
+		foreach ($query as $key => $value)
+		{
+			\dash\db::query($value, 'quran_hadith');
+		}
 
 		self::add_lesson();
 	}
@@ -190,17 +200,29 @@ trait lesson
 			$insert_lesson['semester_id']    = $value['azvir_semester_id'];
 			$insert_lesson['topic_id']       = $value['azvir_topic_id'];
 			$insert_lesson['teacher_id']     = $value['azvir_teacher_id'];
-			$insert_lesson['gender']         = $value['gender'] == 'male' ? 'male' : $value['gender'] == 'female' ? 'female' : 'all';
+
+			$xg = $value['gender'];
+
+			if($xg == 'male' || $xg == 'female')
+			{
+				$gender = $xg;
+			}
+			else
+			{
+				$gender = 'all';
+			}
+
+			$insert_lesson['gender']         = $gender;
 			$insert_lesson['maxperson']      = $value['azvir_maxperson'];
 			$insert_lesson['examdate']       = $value['end_date'];
 
 			$lesson_id = self::fix($azvir->lesson('post', $insert_lesson), false, $insert_lesson);
 
-			if(isset($lesson_id['id']))
+			if(isset($lesson_id['lesson_id']))
 				{
-					$new_id = $lesson_id['id'];
+					$new_id = $lesson_id['lesson_id'];
 
-					$azvir_lesson[$lesson_id['id']] = $lesson_id;
+					$azvir_lesson[$lesson_id['lesson_id']] = $lesson_id;
 				}
 				else
 				{
@@ -225,6 +247,13 @@ trait lesson
 			# code...
 		}
 
+		$query   = [];
+		$query[] = "UPDATE classification SET azvir_lesson_id = (SELECT azvir_lesson_id from classes where classes.id = classification.classes_id);";
+
+		foreach ($query as $key => $value)
+		{
+			\dash\db::query($value, 'quran_hadith');
+		}
 
 	}
 }

@@ -10,6 +10,7 @@ class model
 	use \content\transfer\model\personfix;
 	use \content\transfer\model\student;
 	use \content\transfer\model\lesson;
+	use \content\transfer\model\takenunit;
 	use \content\transfer\model\classroom;
 	use \content\transfer\model\price;
 
@@ -58,6 +59,12 @@ class model
 		$query[] = "ALTER TABLE `classes` ADD `branch_id` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `classes` ADD `gender` varchar(200) NULL DEFAULT NULL";
 		$query[] = "ALTER TABLE `place` ADD `azvir_classroom_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classification` ADD `azvir_member_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classification` ADD `azvir_lesson_id` varchar(200) NULL DEFAULT NULL";
+		$query[] = "ALTER TABLE `classification` ADD `azvir_takenunit_id` varchar(200) NULL DEFAULT NULL";
+
+		$query[] = "UPDATE classification SET azvir_member_id = (SELECT azvir_member_id from person where person.users_id = classification.users_id)";
+		$query[] = "UPDATE classification SET azvir_lesson_id = (SELECT azvir_lesson_id from classes where classes.id = classification.classes_id)";
 		$query[] = "UPDATE classes SET classes.branch_id = (SELECT branch_id from plan where classes.plan_id = plan.id)";
 		$query[] = "UPDATE classes SET classes.gender = (SELECT gender from branch where classes.branch_id = branch.id)";
 		$query[] = "UPDATE classes SET classes.azvir_maxperson = (SELECT max_person from plan where classes.plan_id = plan.id)";
@@ -130,6 +137,11 @@ class model
 
 			case 'price':
 				self::price_calc();
+				break;
+
+
+			case 'takenunit':
+				self::takenunit();
 				break;
 
 			default:
