@@ -166,11 +166,11 @@ trait lesson
 
 			if($value['status'] === 'ready')
 			{
-				$status = 'awaiting';
+				$status = 'draft';
 			}
 			elseif($value['status'] === 'done')
 			{
-				$status = 'expire';
+				$status = 'disable';
 			}
 			elseif ($value['status'] === 'running')
 			{
@@ -180,16 +180,16 @@ trait lesson
 			{
 				$status = 'draft';
 			}
-			$topicteacher = ['topic_id' => $value['azvir_topic_id'], 'teacher_id' => $value['azvir_teacher_id']];
-			$xx = self::fix($azvir->topicteacher('post', $topicteacher), null, $topicteacher);
 
+			$topicteacher = ['topic_id' => $value['azvir_topic_id'], 'teacher_id' => $value['azvir_teacher_id']];
+			$azvir->topicteacher('post', $topicteacher);
 
 			$insert_lesson                   = [];
 			$insert_lesson['status']         = $status;
 			$insert_lesson['force_semester'] = true;
 			$insert_lesson['semester_id']    = $value['azvir_semester_id'];
 			$insert_lesson['topic_id']       = $value['azvir_topic_id'];
-			$insert_lesson['teacher']        = $value['azvir_teacher_id'];
+			$insert_lesson['teacher_id']     = $value['azvir_teacher_id'];
 			$insert_lesson['gender']         = $value['gender'] == 'male' ? 'male' : $value['gender'] == 'female' ? 'female' : 'all';
 			$insert_lesson['maxperson']      = $value['azvir_maxperson'];
 			$insert_lesson['examdate']       = $value['end_date'];
