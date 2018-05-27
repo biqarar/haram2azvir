@@ -136,12 +136,12 @@ trait lesson
 		}
 
 		$query   = [];
-		$query[] = "UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher);";
-		$query[] = "UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id);";
-		$query[] = "UPDATE classification SET azvir_member_id = (SELECT azvir_member_id from person where person.users_id = classification.users_id);";
-		$query[] = "UPDATE classes SET classes.branch_id = (SELECT branch_id from plan where classes.plan_id = plan.id);";
-		$query[] = "UPDATE classes SET classes.gender = (SELECT gender from branch where classes.branch_id = branch.id);";
-		$query[] = "UPDATE classes SET classes.azvir_maxperson = (SELECT max_person from plan where classes.plan_id = plan.id);";
+		$query[] = "UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)";
+		$query[] = "UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id)";
+		$query[] = "UPDATE classification SET azvir_member_id = (SELECT azvir_member_id from person where person.users_id = classification.users_id)";
+		$query[] = "UPDATE classes SET classes.branch_id = (SELECT branch_id from plan where classes.plan_id = plan.id)";
+		$query[] = "UPDATE classes SET classes.gender = (SELECT gender from branch where classes.branch_id = branch.id)";
+		$query[] = "UPDATE classes SET classes.azvir_maxperson = (SELECT max_person from plan where classes.plan_id = plan.id)";
 
 		foreach ($query as $key => $value)
 		{
@@ -248,7 +248,7 @@ trait lesson
 		}
 
 		$query   = [];
-		$query[] = "UPDATE classification SET azvir_lesson_id = (SELECT azvir_lesson_id from classes where classes.id = classification.classes_id);";
+		$query[] = "UPDATE classification SET azvir_lesson_id = (SELECT azvir_lesson_id from classes where classes.id = classification.classes_id)";
 
 		foreach ($query as $key => $value)
 		{

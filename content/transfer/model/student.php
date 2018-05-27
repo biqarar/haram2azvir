@@ -57,6 +57,7 @@ trait student
 					person
 				WHERE
 					person.azvir_member_id IS NULL
+					order by person.birthday DESC
 			";
 		}
 
