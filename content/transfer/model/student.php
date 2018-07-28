@@ -99,13 +99,17 @@ trait student
 				$passportdate = null;
 			}
 
+			$city_name     = null;
+			$province_name = null;
+			$country_name  = null;
+
 			$insert_member =
 			[
 				'force_add'       => true,
 				$type             => 1,
 				'mobile'          => $value['mobile'],
 				'email'           => $value['email'],
-				'shfrom'          => $value['province_name'],
+				'shfrom'          => $province_name,
 				'foreign'         => intval($value['nationality']) === 97 ? false : true ,
 
 				'firstname'       => $value['name'],
