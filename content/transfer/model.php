@@ -24,11 +24,11 @@ class model
 		$text .= json_encode($_responce, JSON_UNESCAPED_UNICODE). "\n";
 		$text .= json_encode($_data, JSON_UNESCAPED_UNICODE). "\n\n";
 
-		if(array_key_exists('ok', $_responce))
+		if(is_array($_responce) && array_key_exists('ok', $_responce))
 		{
 			if(!$_responce['ok'])
 			{
-				file_put_contents(__DIR__. '/model/log',$text , FILE_APPEND);
+				file_put_contents(__DIR__. '/log/log',$text , FILE_APPEND);
 			}
 		}
 

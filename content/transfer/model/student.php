@@ -86,6 +86,11 @@ trait student
 			$province_name = $value['province_name'] ? self::find_place($value['province_name'], 'province') : null ;
 			$country_name  = $value['country_name'] ? self::find_place($value['country_name'], 'country') : null ;
 
+			if($country_name)
+			{
+				$country_name = str_replace(' ', '-', $country_name);
+			}
+
 			$birthdate = \dash\date::db($value['birthday']);
 			if($birthdate === false)
 			{
@@ -99,9 +104,9 @@ trait student
 				$passportdate = null;
 			}
 
-			$city_name     = null;
-			$province_name = null;
-			$country_name  = null;
+			// $city_name     = null;
+			// $province_name = null;
+			// $country_name  = null;
 
 			$insert_member =
 			[
@@ -133,6 +138,7 @@ trait student
 				'city'            => $city_name,
 				'province'        => $province_name,
 				'country'         => $country_name,
+				'nationality'     => $country_name,
 				'address'         => null,
 				'phone'           => $value['phone'],
 				'mobile2'         => null,
@@ -145,7 +151,7 @@ trait student
 			$insert_member['code'] = $value['username'];
 
 
-			if(\dash\utility\filter::nationalcode($value['nationalcode']))
+			if(\dash\utility\filter::nationalcode($value['nationalcode'])  && intval($value['nationality']) === 97 )
 			{
 				$insert_member['nationalcode'] = $value['nationalcode'];
 				$insert_member['foreign']      = false;
@@ -157,7 +163,6 @@ trait student
 			}
 
 			$xazvir = $azvir->member('post', $insert_member);
-
 			$member_id = self::fix($xazvir, true ,[$value, $insert_member]);
 
 			if(isset($member_id['member_id']))

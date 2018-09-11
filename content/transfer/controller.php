@@ -8,10 +8,11 @@ class controller
 	public static function routing()
 	{
 		ini_set('memory_limit', '-1');
+		ini_set('max_execution_time', '999999999999999999');
 
 		if(!defined('azvir_api_key'))
 		{
-			define('azvir_api_key', '$2y$07$xEsgv.E9A1zZ0PP.3BaVW.KzO3o3GcMQmzIR6.y5c23R0kUwpCsJy');
+			define('azvir_api_key', '$2y$07$jYmLs6CX1Fjcwz4NVpd8wuV1g92KSRyrRX.nj0nKL01GY2VvaBKcq');
 		}
 
 		if(!defined('azvir_api_school'))
