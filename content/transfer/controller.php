@@ -11,12 +11,12 @@ class controller
 
 		if(!defined('azvir_api_key'))
 		{
-			define('azvir_api_key', '$2y$07$k4DkzuHW.RIg9eXAuEQDne3hqE5r3mjQrRz9EgCX0L5fG.BCK5MdO');
+			define('azvir_api_key', '$2y$07$xEsgv.E9A1zZ0PP.3BaVW.KzO3o3GcMQmzIR6.y5c23R0kUwpCsJy');
 		}
 
 		if(!defined('azvir_api_school'))
 		{
-			define('azvir_api_school', 'haram7');
+			define('azvir_api_school', 'edu');
 		}
 
 		// $azvir = new \dash\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
