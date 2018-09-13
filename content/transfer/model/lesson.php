@@ -4,8 +4,251 @@ namespace content\transfer\model;
 
 trait lesson
 {
+	public static function end_force()
+	{
+		$x = '[
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "p",
+    "topic_id": "fw",
+    "teacher_id": "5Gr",
+    "code": "332",
+    "gender": "female",
+    "maxperson": "10",
+    "examdate": "13950401"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "s",
+    "topic_id": "fF",
+    "teacher_id": "5Gr",
+    "code": "359",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13940530"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "s",
+    "topic_id": "fF",
+    "teacher_id": "5Gr",
+    "code": "360",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13940530"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "t",
+    "topic_id": "r3",
+    "teacher_id": "c26",
+    "code": "123",
+    "gender": "male",
+    "maxperson": "12",
+    "examdate": "13931229"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "t",
+    "topic_id": "r3",
+    "teacher_id": "c26",
+    "code": "124",
+    "gender": "male",
+    "maxperson": "12",
+    "examdate": "13931229"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "t",
+    "topic_id": "r3",
+    "teacher_id": "c26",
+    "code": "125",
+    "gender": "male",
+    "maxperson": "12",
+    "examdate": "13931229"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "t",
+    "topic_id": "gd",
+    "teacher_id": "5Gr",
+    "code": "101",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13940130"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "t",
+    "topic_id": "fF",
+    "teacher_id": "5Gr",
+    "code": "361",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13941030"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "t",
+    "topic_id": "fF",
+    "teacher_id": "5Gr",
+    "code": "362",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13941101"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "r",
+    "topic_id": "gD",
+    "teacher_id": "9Dr",
+    "code": "205",
+    "gender": "male",
+    "maxperson": "20",
+    "examdate": "13931113"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "r",
+    "topic_id": "gD",
+    "teacher_id": "9Dr",
+    "code": "207",
+    "gender": "male",
+    "maxperson": "20",
+    "examdate": "13940230"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "v",
+    "topic_id": "fF",
+    "teacher_id": "5Gr",
+    "code": "425",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13950631"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "v",
+    "topic_id": "kQ",
+    "teacher_id": "9Dr",
+    "code": "390",
+    "gender": "male",
+    "maxperson": "20",
+    "examdate": "13940425"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "v",
+    "topic_id": "kQ",
+    "teacher_id": "9Dr",
+    "code": "391",
+    "gender": "male",
+    "maxperson": "20",
+    "examdate": "13940425"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "v",
+    "topic_id": "r3",
+    "teacher_id": "c26",
+    "code": "405",
+    "gender": "male",
+    "maxperson": "12",
+    "examdate": null
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "v",
+    "topic_id": "r3",
+    "teacher_id": "c26",
+    "code": "431",
+    "gender": "male",
+    "maxperson": "12",
+    "examdate": null
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "v",
+    "topic_id": "gM",
+    "teacher_id": "c26",
+    "code": "669",
+    "gender": "male",
+    "maxperson": "20",
+    "examdate": "13150331"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "y",
+    "topic_id": "kV",
+    "teacher_id": "5Gr",
+    "code": "796",
+    "gender": "female",
+    "maxperson": "25",
+    "examdate": "13950615"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "z",
+    "topic_id": "jX",
+    "teacher_id": "5rB",
+    "code": "911",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13950631"
+  },
+  {
+    "status": "disable",
+    "force_semester": true,
+    "semester_id": "C",
+    "topic_id": "gB",
+    "teacher_id": "5rB",
+    "code": "1376",
+    "gender": "female",
+    "maxperson": "40",
+    "examdate": "13960331"
+  }
+]';
+
+	$x = json_decode($x, true);
+
+	$azvir = new \dash\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
+
+	foreach ($x as $key => $value)
+	{
+			$topicteacher = ['topic_id' => $value['topic_id'], 'teacher_id' => $value['teacher_id']];
+			$azvir->topicteacher('post', $topicteacher);
+			$lesson_id = self::fix($azvir->lesson('post', $value), false, $value);
+
+	}
+	var_dump(1);exit();
+	}
+
+
 	public static function lesson()
 	{
+
+		self::end_force();
+		exit();
 		$query =
 		"
 			SELECT
@@ -135,7 +378,7 @@ trait lesson
 		}
 
 		$query   = [];
-		$query[] = "UPDATE classes set azvir_teacher_id = (SELECT azvir_teacher_id FROM person WHERE person.users_id = classes.teacher)";
+		$query[] = "UPDATE classes set azvir_teacher_id = (SELECT azvir_member_id FROM person WHERE person.users_id = classes.teacher)";
 		$query[] = "UPDATE classes set azvir_topic_id = (SELECT azvir_topic_id FROM plan WHERE plan.id = classes.plan_id)";
 		$query[] = "UPDATE classification SET azvir_member_id = (SELECT azvir_member_id from person where person.users_id = classification.users_id)";
 		$query[] = "UPDATE classes SET classes.branch_id = (SELECT branch_id from plan where classes.plan_id = plan.id)";
