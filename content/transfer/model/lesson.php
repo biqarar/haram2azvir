@@ -199,6 +199,7 @@ trait lesson
 			$insert_lesson['semester_id']    = $value['azvir_semester_id'];
 			$insert_lesson['topic_id']       = $value['azvir_topic_id'];
 			$insert_lesson['teacher_id']     = $value['azvir_teacher_id'];
+			$insert_lesson['code']           = $value['id'];
 
 			$xg = $value['gender'];
 

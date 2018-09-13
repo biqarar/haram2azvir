@@ -31,7 +31,7 @@ trait takenunit
 			}
 			elseif($value['because'] == 'absence')
 			{
-				$status = 'remove';
+				$status = 'removeadmin';
 
 			}
 
@@ -43,8 +43,9 @@ trait takenunit
 		// }
 
 			$insert_takenunit                         = [];
+			$insert_takenunit['force_add']            = true;
 			$insert_takenunit['addedby']              = 'expert';
-			// $insert_takenunit['firstscore']        = $firstscore;
+			$insert_takenunit['firstscore']           = $value['mark'];
 			// $insert_takenunit['firstscoretime']    = $firstscoretime;
 			// $insert_takenunit['teacherscore']      = $teacherscore;
 			// $insert_takenunit['teacherscoretime']  = $teacherscoretime;

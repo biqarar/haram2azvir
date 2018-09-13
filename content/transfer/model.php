@@ -12,6 +12,7 @@ class model
 	use \content\transfer\model\lesson;
 	use \content\transfer\model\takenunit;
 	use \content\transfer\model\classroom;
+	use \content\transfer\model\certification;
 	use \content\transfer\model\times;
 	use \content\transfer\model\price;
 
@@ -142,6 +143,11 @@ class model
 
 			case 'times':
 				self::times();
+				break;
+
+
+			case 'certification':
+				self::certification();
 				break;
 
 			default:
