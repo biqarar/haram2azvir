@@ -15,7 +15,7 @@ trait nationalcode
 			FROM
 				person
 			WHERE
-				nationalcode <> ''
+				(nationalcode <> '' and nationalcode is not null)
 			GROUP BY nationalcode
 			HAVING count(nationalcode) >= 2
 		";
@@ -26,7 +26,8 @@ trait nationalcode
 			\dash\notif::ok("حله");
 			return false;
 		}
-		// var_dump($result);exit();
+		var_dump($result);exit();
+
 		foreach ($result as $nationalcode => $value)
 		{
 			$find_username = "SELECT users.username FROM person INNER JOIN users ON users.id = person.users_id WHERE person.nationalcode = '$nationalcode' ";

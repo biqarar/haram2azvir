@@ -11,16 +11,11 @@ trait student
 			$query =
 			"
 				SELECT
-					person.*,
-					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'mobile' LIMIT 1) AS `mobile`,
-					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'phone' LIMIT 1) AS `phone`,
-					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'email' LIMIT 1) AS `email`,
-					(SELECT users.username from users where users.id = person.users_id ) AS `username`
+					person.*
 				FROM
 					person
 				INNER JOIN users_branch ON users_branch.users_id = person.users_id
 				WHERE
-					person.azvir_expert_id IS NULL AND
 					users_branch.type = 'operator'
 			";
 		}
@@ -29,16 +24,11 @@ trait student
 			$query =
 			"
 				SELECT
-					person.*,
-					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'mobile' LIMIT 1) AS `mobile`,
-					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'phone' LIMIT 1) AS `phone`,
-					(SELECT bridge.value from bridge where bridge.users_id = person.users_id AND bridge.title  = 'email' LIMIT 1) AS `email`,
-					(SELECT users.username from users where users.id = person.users_id ) AS `username`
+					person.*
 				FROM
 					person
 				INNER JOIN users_branch ON users_branch.users_id = person.users_id
 				WHERE
-					person.azvir_teacher_id IS NULL AND
 					users_branch.type = 'teacher'
 			";
 		}
@@ -56,9 +46,12 @@ trait student
 					person
 				WHERE
 					person.azvir_member_id IS NULL
-					order by person.birthday DESC
+
 			";
+
 		}
+
+
 
 		$result = \dash\db::get($query, null, false, 'quran_hadith');
 
@@ -79,6 +72,23 @@ trait student
 		}
 
 		$azvir = new \dash\utility\ermile\azvir(azvir_api_key, azvir_api_school, 1);
+
+		foreach ($result as $key => $value)
+		{
+			$patch =
+			[
+				'id'  => $value['azvir_member_id'],
+				$type => 1,
+			];
+
+			$xpatch = $azvir->member('patch', $patch);
+		}
+
+		\dash\notif::ok("همه رفتند");
+		return false;
+
+		/// need less to this code after send all user
+
 		foreach ($result as $key => $value)
 		{
 

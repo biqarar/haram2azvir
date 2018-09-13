@@ -12,7 +12,7 @@ class controller
 
 		if(!defined('azvir_api_key'))
 		{
-			define('azvir_api_key', '$2y$07$jYmLs6CX1Fjcwz4NVpd8wuV1g92KSRyrRX.nj0nKL01GY2VvaBKcq');
+			define('azvir_api_key', '$2y$07$UaKcZIYhLVuylGrQmr5n/Of32sqziXOCQHc0thc3SBpih/PGfqAgu');
 		}
 
 		if(!defined('azvir_api_school'))
