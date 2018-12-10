@@ -7609,7 +7609,7 @@ msgstr ""
 
 #: azvir/includes/languages/trans_project.php:825
 msgid "Education2"
-msgstr "تحصیلات۲"
+msgstr "تحصیلات ثانوی"
 
 #: azvir/includes/languages/trans_project.php:826
 msgid "Education Course"
@@ -9580,7 +9580,7 @@ msgstr "تحصیلات نامعتبر"
 
 #: azvir/includes/lib/app/member.php:317
 msgid "Invalid education2"
-msgstr "تحصیلات۲ نامعتبر"
+msgstr "تحصیلات ثانوی نامعتبر"
 
 #: azvir/includes/lib/app/member.php:325
 msgid "Invalid educationcourse"
@@ -13269,7 +13269,7 @@ msgstr "نمایش دسته‌بندی‌ها در کنترل پنل"
 
 #: dash/addons/includes/languages/trans_static.php:415
 msgid "cpTagView"
-msgstr "نایش کلید‌واژه‌ها در کنترل پنل"
+msgstr "نمایش کلید‌واژه‌ها در کنترل پنل"
 
 #: dash/addons/includes/languages/trans_static.php:416
 msgid "cpCategoryEdit"
