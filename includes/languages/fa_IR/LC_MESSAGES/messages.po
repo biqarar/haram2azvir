@@ -882,7 +882,7 @@ msgstr "ویرایش تنظیمات عمومی این :lesson"
 #: azvir/content_m/lesson/general/view.php:12
 msgid ""
 "Set some setting like max person and gender of :student in this :lesson."
-msgstr "ثبت برخی از تنظیمات مانند حد اکثر نفرات و جنسیت :student  این :lesson"
+msgstr "ثبت برخی از تنظیمات مانند حداکثر نفرات و جنسیت :student  این :lesson"
 
 #: azvir/content_m/lesson/home/view.php:12
 msgid ":lessons list"
@@ -5416,7 +5416,7 @@ msgstr "محدودیت‌های حداکثر داده‌ها"
 
 #: azvir/includes/languages/trans_project.php:127
 msgid "Max number of members"
-msgstr "حد اکثر اعضاء"
+msgstr "حداکثر اعضاء"
 
 #: azvir/includes/languages/trans_project.php:128
 msgid "Person"
@@ -5428,7 +5428,7 @@ msgstr "حداکثر تعداد اساتید"
 
 #: azvir/includes/languages/trans_project.php:130
 msgid "Max number of experts"
-msgstr "حد اکثر کارشناسان"
+msgstr "حداکثر کارشناسان"
 
 #: azvir/includes/languages/trans_project.php:131
 msgid "Atttendance"
@@ -5614,7 +5614,7 @@ msgstr "در همان روز کاری"
 
 #: azvir/includes/languages/trans_project.php:178
 msgid "max 8 hour"
-msgstr "حد اکثر ۸ ساعت"
+msgstr "حداکثر ۸ ساعت"
 
 #: azvir/includes/languages/trans_project.php:179
 msgid "Emergency phone support"
@@ -5662,7 +5662,7 @@ msgstr "ماهیانه"
 
 #: azvir/includes/languages/trans_project.php:192
 msgid "Maximum"
-msgstr "حد اکثر"
+msgstr "حداکثر"
 
 #: azvir/includes/languages/trans_project.php:194
 msgid "Introduction website"
@@ -7945,7 +7945,7 @@ msgstr "طول عمر عمومی سرفصل"
 
 #: azvir/includes/languages/trans_project.php:968
 msgid "Public max credit"
-msgstr "حد اکثر اعتبار عضو"
+msgstr "حداکثر اعتبار عضو"
 
 #: azvir/includes/languages/trans_project.php:969
 msgid "Wellcome message"
@@ -9468,7 +9468,7 @@ msgstr "لطفا استاد را انتخاب کنید"
 
 #: azvir/includes/lib/app/lesson/check_error.php:36
 msgid "Please set :maxperson"
-msgstr "لطفا حد اکثر نفرات را وارد کنید"
+msgstr "لطفا حداکثر نفرات را وارد کنید"
 
 #: azvir/includes/lib/app/lesson/check_error.php:49
 msgid "Please set times of this :lesson"
@@ -10109,7 +10109,7 @@ msgstr "طول عمر سرفصل :school خارج از محدوده است"
 
 #: azvir/includes/lib/app/school.php:267
 msgid "Max credit of :school must be a number"
-msgstr "حد اکثر اعتبار :school باید به صورت عددی وارد شود"
+msgstr "حداکثر اعتبار :school باید به صورت عددی وارد شود"
 
 #: azvir/includes/lib/app/school.php:273
 msgid "Max credit of :school is out of range"
@@ -11460,7 +11460,7 @@ msgstr "موبایل یافت نشد"
 
 #: dash/addons/content_enter/home/model.php:103
 msgid "You hit our maximum try limit."
-msgstr "شما حد اکثر تلاش خود را انجام دادید."
+msgstr "شما حداکثر تلاش خود را انجام دادید."
 
 #: dash/addons/content_enter/home/model.php:103
 msgid "Try again later!"
